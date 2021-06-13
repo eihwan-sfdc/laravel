@@ -15,43 +15,43 @@
 
 
         <!-- Pace.js -->
-        <script src="js/pace.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/pace.js') }}" type="text/javascript"> </script>
 
         <!-- Foundations 5 Stylesheet-->
-        <link href="css/foundation.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="{{ secure_asset('css/foundation.css') }}" type="text/css" rel="stylesheet" media="screen" />
 
         <!-- Normalize-->
-        <link href="css/normalize.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="{{ secure_asset('css/normalize.css') }}" type="text/css" rel="stylesheet" media="screen" />
 
         <!-- Source Sans Pro Google Web Font-->
         <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
 
         <!-- Font Awesome Web Font Icons-->
-        <link href="css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="{{ secure_asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
 
         <!-- General Stylesheet-->
-        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen" />
+        <link href="{{ secure_asset('css/style.css') }}" type="text/css" rel="stylesheet" media="screen" />
 
         <!-- jQuery Library 1.11.0 -->
-        <script type="text/javascript" src="js/jquery-1.11.0.min.js"> </script>
+        <script type="text/javascript" src="{{ secure_asset('js/jquery-1.11.0.min.js') }}"> </script>
 
         <!-- Modernizr v2.7.1 -->
-        <script src="js/modernizr.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/modernizr.js') }}" type="text/javascript"> </script>
 
         <!-- Foundations 5 -->
-        <script src="js/foundation.min.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/foundation.min.js') }}" type="text/javascript"> </script>
 
         <!-- Caroufredsel jQuery Plugin -->
-        <script src="js/jquery.carouFredSel-6.2.1-packed.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/jquery.carouFredSel-6.2.1-packed.js') }}" type="text/javascript"> </script>
 
         <!-- Isotope jQuery Plugin -->
-        <script src="js/jquery.isotope.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/jquery.isotope.js') }}" type="text/javascript"> </script>
 
         <!-- Appear Plugin -->
-        <script src="js/appear.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/appear.js') }}" type="text/javascript"> </script>
 
         <!-- General Initialization -->
-        <script src="js/general.js" type="text/javascript"> </script>
+        <script src="{{ secure_asset('js/general.js') }}" type="text/javascript"> </script>
 
         <!-- Evergage -->
         <script type="text/javascript" src="//cdn.evgnet.com/beacon/ekim1482497/engage/scripts/evergage.min.js"></script>
