@@ -24,7 +24,7 @@
         <link href="{{ secure_asset('css/normalize.css') }}" type="text/css" rel="stylesheet" media="screen" />
 
         <!-- Source Sans Pro Google Web Font-->
-        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,400italic,600italic,700italic&subset=latin,vietnamese,latin-ext' rel='stylesheet' type='text/css'>
 
         <!-- Font Awesome Web Font Icons-->
         <link href="{{ secure_asset('css/font-awesome.min.css') }}" type="text/css" rel="stylesheet" media="screen" />
