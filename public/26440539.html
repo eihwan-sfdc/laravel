@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <!--Styles-->
+    <style type="text/css">
+        body {
+            padding: 20px;
+            margin: 0;
+        }
+        .step {
+            display: none;
+        }
+        #step1 {
+            display: block;
+        }
+    </style>
+
+</head>
+<body>
+  <div class="title m-b-md">
+      Product_updateItem
+  </div>
+  <div class="links">
+  </div>
+  <script type="text/javascript" src="//100033657.collect.igodigital.com/collect.js"></script>
+  <script>
+
+    //日付から文字列に変換する関数
+    function getStringFromDate(date) {
+
+     var year_str = date.getFullYear();
+     //月だけ+1すること
+     var month_str = 1 + date.getMonth();
+     var day_str = date.getDate();
+     var hour_str = date.getHours();
+     var minute_str = date.getMinutes();
+     var second_str = date.getSeconds();
+
+     format_str = 'YYYYMMDDhhmmss';
+     format_str = format_str.replace(/YYYY/g, year_str);
+     format_str = format_str.replace(/MM/g, month_str);
+     format_str = format_str.replace(/DD/g, day_str);
+     format_str = format_str.replace(/hh/g, hour_str);
+     format_str = format_str.replace(/mm/g, minute_str);
+     format_str = format_str.replace(/ss/g, second_str);
+
+     return format_str;
+    };
+    var date = new Date();
+    var rtn_str = getStringFromDate(date);
+
+
+    _etmc.push(["setOrgId", "100033657"]);
+    _etmc.push(["setUserInfo", {"email": "eihwan"}]);
+    _etmc.push(["trackPageView"]);
+    _etmc.push(["updateItem",
+      {
+        "item_type": "product",
+        "item": "item26440539",
+        "name": "item_product_code26440539",
+        "url": "https://eihwan.com/product/26440539",
+        "unique_id": "product_uniqid26440539",
+        "available": "Y"
+      }
+    ]);
+
+  </script>
+</body>
+</html>

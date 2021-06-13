@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('line/webhook','LineController@webhook');
+Route::post('custom_activity/execute', 'CustomActivityController@execute');
+Route::post('custom_activity/save', 'CustomActivityController@custom_save');
+Route::post('custom_activity/publish', 'CustomActivityController@custom_publish');
+Route::post('custom_activity/validate', 'CustomActivityController@custom_validate');
+Route::post('custom_activity/stop', 'CustomActivityController@custom_stop');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });

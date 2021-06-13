@@ -16,3 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/product/{id}', 'PiController@product');
+Route::get('/content/{id}', 'PiController@content');
+Route::get('/banner/{id}', 'PiController@banner');
+Route::get('/custom_activity', 'CustomActivityController@index');
+Route::get('/pi/product/updateItem', 'PiController@product_updateItem');
+Route::get('/pi/content/updateItem', 'PiController@content_updateItem');
+Route::get('/pi/banner/updateItem', 'PiController@banner_updateItem');
