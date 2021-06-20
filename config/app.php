@@ -2,8 +2,8 @@
 
 return [
 
-    'EVERGAGE_ACCOUNT' => env('EVERGAGE_ACCOUNT', ''),
-    'EVERGAGE_DATASET' => env('EVERGAGE_DATASET', ''),
+    'evergage_account' => env('evergage_account', 'production'),
+    'evergage_dataset' => env('evergage_dataset', 'production'),
     /*
     |--------------------------------------------------------------------------
     | Application Name
