@@ -292,7 +292,7 @@ window.OrdergrooveLegacyOffers = false
     <script src="https://cdn.cquotient.com/js/v2/gretel.min.js" type="text/javascript" async="async"></script>
 
     <!-- Evergage -->
-    <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('evergage.account')}}/{{config('evergage.dataset')}}/scripts/evergage.min.js"></script>
+    <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('EVERGAGE_ACCOUNT')}}/{{config('EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 </body>
 
 </html>
