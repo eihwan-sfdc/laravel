@@ -24,5 +24,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        config(['evergage.account' => 'ekim1482497']);
+        config(['evergage.dataset' => 'engage']);
     }
 }
