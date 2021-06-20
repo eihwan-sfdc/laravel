@@ -289,9 +289,11 @@ window.OrdergrooveLegacyOffers = false
             data-acceptText="Yes" data-rejectText="No" data-heading="Tracking Consent"></span>
 
     </div>
+
     <script src="https://cdn.cquotient.com/js/v2/gretel.min.js" type="text/javascript" async="async"></script>
 
     <!-- Evergage -->
+    {{config('app.hoge')}}
     <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 </body>
 

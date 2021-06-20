@@ -2,6 +2,7 @@
 
 return [
 
+    'hoge' => 'hogehoge',
     'EVERGAGE_ACCOUNT' => env('EVERGAGE_ACCOUNT', null),
     'EVERGAGE_DATASET' => env('EVERGAGE_DATASET', null),
     /*
