@@ -13,8 +13,8 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet"
-        href="https://www.northerntrailoutfitters.com/on/demandware.static/Sites-NTOSFRA-Site/-/default/v1620314378166/css/global.css" />
+    <link rel="stylesheet" 
+        href="/css/global.css" />
 </head>
 
 <body class="">
