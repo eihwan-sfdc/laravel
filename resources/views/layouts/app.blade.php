@@ -1,300 +1,83 @@
-<!DOCTYPE html>
-<html lang="">
-
+<!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
-    <!--<![endif]-->
-    <meta charset="UTF-8" />
-    <meta name="robots" content="noindex">
-    <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>
-        Sites-NTOSFRA-Site
-    </title>
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="stylesheet" 
-        href="/css/global.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
+<body>
+    <div id="app">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+            <div class="container">
+                <a class="navbar-brand" href="{{ url('/') }}">
+                    {{ config('app.name', 'Laravel') }}
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-<body class="">
-    
-    <div class="page" data-action="Home-Show" data-querystring="">
-        <header class="site-header">
-            <section class="preheader d-none d-lg-block">
-                <nav class="h-100 d-flex align-items-center justify-content-between">
-                    <section class="d-flex align-items-center">
-                    </section>
-                    <section class="promo-banner">
-                        <div class="html-slot-container">
-                            Buy Online, Pickup Curbside Today!
-                        </div>
-                    </section>
-                    <section class="d-flex align-items-center">
-                        <div class="d-none d-md-inline-block">
-                        </div>
-                    </section>
-                </nav>
-            </section>
-            <section class="main-menu">
-                <nav class="navbar navbar-light navbar-expand-lg">
-                    <div class="navbar-inner d-flex align-items-center justify-content-between w-100 px-lg-3">
-                        <div class="navbar-brand mr-md-3">
-                            <button class="navbar-toggler" type="button" data-toggle="slide-collapse"
-                                data-target=".main-menu" aria-controls="main-menu" aria-expanded="false"
-                                aria-label="Toggle navigation">
-                                <i class="fal fa-bars mr-1" aria-hidden="true"></i>
-                            </button>
-                            <img class="logo"
-                                src="https://www.northerntrailoutfitters.com/on/demandware.static/Sites-NTOSFRA-Site/-/default/dwafd353aa/images/logo.svg"
-                                alt="Commerce Cloud Storefront Reference Architecture" />
-                        </div>
-                    </div>
-                </nav>
-            </section>
-            <div class="minicart-container d-flex flex-column"></div>
-        </header>
-        @yield('content')
-        <section class="main-content" role="main">
-            <div class="error-messaging"></div>
-            <div class="modal-background"></div>
-        </section>
-        <footer class="site-footer">
-            <div class="site-footer__inner-container">
-                <div class="container_sm">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <!-- Left Side Of Navbar -->
+                    <ul class="navbar-nav mr-auto">
 
-                    <div class="row site-footer_content justify-content-center">
-                        <div class="col-10">
-                            <div class="row flex-wrap-reverse flex-lg-row">
-                                <div class="site-footer_marketing col-12 col-lg-4">
+                    </ul>
+
+                    <!-- Right Side Of Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                </li>
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                </li>
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ Auth::user()->name }}
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                        {{ __('Logout') }}
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
                                 </div>
-                                <nav class="d-flex flex-column flex-md-row justify-content-between col-12 col-lg-8">
-                                    <div class="site-footer_col mb-3 ml-md-4">
-                                        <div class="html-slot-container">
-                                        </div>
-                                    </div>
-                                    <div class="site-footer_col mb-3 ml-md-4">
-                                        <div class="html-slot-container">
-                                        </div>
-                                    </div>
-                                    <div class="site-footer_col mb-3 ml-md-4">
-                                        <div class="html-slot-container">
-                                        </div>
-                                    </div>
-                                    <div class="site-footer_col mb-3 ml-md-4">
-                                        <div class="html-slot-container">
-                                        </div>
-                                    </div>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="notice py-3">
-
-
-                    <div class="content-asset">
-                        <!-- dwMarker="content" dwContentID="c7bded0da5c1cc4a575fedcb71" -->
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-md-5 d-flex align-items-center">
-                                    <div class="demo-site">Northern Trail Outfitters is not a real company. It is used
-                                        for Salesforce demos. No orders will be processed.</div>
-                                </div>
-                                <div class="col-md-2 text-center py-3 py-md-0">
-                                </div>
-                                <div class="col-md-5 d-flex align-items-center">
-                                </div>
-                            </div>
-                        </div>
-                    </div> <!-- End content-asset -->
-
-
-
+                            </li>
+                        @endguest
+                    </ul>
                 </div>
             </div>
-        </footer>
-        <div class="modal fade cookie-preferences" tabindex="-1" role="dialog" aria-labelledby="cookie-preferences"
-            aria-hidden="true">
-            <div class="modal-dialog modal-lg" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h3 class="modal-title">Privacy Preferences</h3>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-3">
-                                <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
-                                    aria-orientation="vertical">
-                                    <a class="nav-link active" id="v-pills-your-privacy-tab" data-toggle="pill"
-                                        href="#v-pills-your-privacy" role="tab" aria-controls="v-pills-your-privacy"
-                                        aria-selected="true">Your Privacy</a>
-                                    <a class="nav-link" id="v-pills-required-cookies-tab" data-toggle="pill"
-                                        href="#v-pills-required-cookies" role="tab"
-                                        aria-controls="v-pills-required-cookies" aria-selected="false">Required
-                                        Cookies</a>
-                                    <a class="nav-link" id="v-pills-functional-cookies-tab" data-toggle="pill"
-                                        href="#v-pills-functional-cookies" role="tab"
-                                        aria-controls="v-pills-functional-cookies" aria-selected="false">Functional
-                                        Cookies</a>
-                                    <a class="nav-link" id="v-pills-advertising-cookies-tab" data-toggle="pill"
-                                        href="#v-pills-advertising-cookies" role="tab"
-                                        aria-controls="v-pills-advertising-cookies" aria-selected="false">
-                                        Advertising Cookies
-                                    </a>
-                                    <a class="nav-link d-flex justify-content-between align-items-center"
-                                        href="/on/demandware.store/Sites-NTOSFRA-Site/default/ContactUs-PrivacyRequest">
-                                        <span>Privacy Request</span>
-                                    </a>
-                                    <a class="nav-link d-flex justify-content-between align-items-center"
-                                        href="/default/privacypolicy.html">
-                                        <span>Privacy Statement</span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-9">
-                                <div class="tab-content" id="v-pills-tabContent">
-                                    <div class="tab-pane fade show active" id="v-pills-your-privacy" role="tabpanel"
-                                        aria-labelledby="v-pills-your-privacy-tab">
-                                        <h3>Your Privacy</h3>
+        </nav>
 
-
-
-                                        <div class="content-asset">
-                                            <!-- dwMarker="content" dwContentID="98d6761c302ee37bcaf1d8e883" -->
-                                            <p>We use three kinds of cookies on our websites: required, functional, and
-                                                advertising. You can choose to opt out of functional and advertising
-                                                cookies. Click on the different cookie categories to find out more about
-                                                each category and to change the default settings.</p>
-                                        </div> <!-- End content-asset -->
-
-
-
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-required-cookies" role="tabpanel"
-                                        aria-labelledby="v-pills-required-cookies-tab">
-                                        <div class="d-flex justify-content-between">
-                                            <h3>Required Cookies</h3>
-                                            <span>Always Active</span>
-                                        </div>
-
-
-
-                                        <div class="content-asset">
-                                            <!-- dwMarker="content" dwContentID="79bdbd938b89888367d3e9d8a9" -->
-                                            <p>Required cookies are necessary for basic website functionality. Some
-                                                examples include: session cookies needed to transmit the website,
-                                                authentication cookies, and security cookies.</p>
-                                        </div> <!-- End content-asset -->
-
-
-
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-functional-cookies" role="tabpanel"
-                                        aria-labelledby="v-pills-functional-cookies-tab">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h3>Functional Cookies</h3>
-                                            <div>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="functional-cookies-toggle" />
-                                                    <label class="custom-control-label" for="functional-cookies-toggle">
-                                                        <span class="active">Active
-                                                        </span>
-                                                        <span class="inactive">Inactive</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="content-asset">
-                                            <!-- dwMarker="content" dwContentID="515d3b3f8ab86ddaa6a76351ad" -->
-                                            <p>Functional cookies enhance functions, performance, and services on the
-                                                website. Some examples include: cookies used to analyze site traffic,
-                                                cookies used for market research, and cookies used to display
-                                                advertising that is not directed to a particular individual.</p>
-                                        </div> <!-- End content-asset -->
-
-
-
-                                    </div>
-                                    <div class="tab-pane fade" id="v-pills-advertising-cookies" role="tabpanel"
-                                        aria-labelledby="v-pills-advertising-cookies-tab">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h3>Advertising Cookies</h3>
-                                            <div>
-                                                <div class="custom-control custom-switch">
-                                                    <input type="checkbox" class="custom-control-input"
-                                                        id="advertising-cookies-toggle" checked />
-                                                    <label class="custom-control-label"
-                                                        for="advertising-cookies-toggle">
-                                                        <span class="active">Active
-                                                        </span>
-                                                        <span class="inactive">Inactive</span>
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="content-asset">
-                                            <!-- dwMarker="content" dwContentID="cb2a6c9e8cb6fef94599ee2e29" -->
-                                            <p>Advertising cookies track activity across websites in order to understand
-                                                a viewer’s interests, and direct them specific marketing. Some examples
-                                                include: cookies used for remarketing, or interest-based advertising.
-                                            </p>
-                                        </div> <!-- End content-asset -->
-
-
-
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" data-dismiss="modal">
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!--[if lt IE 10]>
-<script>//common/scripts.isml</script>
-<script defer type="text/javascript" src="/on/demandware.static/Sites-NTOSFRA-Site/-/default/v1620314378166/js/main.js"></script>
-
-<script type="text/javascript" src="https://static.ordergroove.com/d9600cbe37d211eaaf4dbc764e10b970/main.js"></script>
-<script type="text/javascript">
-window.OrdergrooveTrackingUrl = "/on/demandware.store/Sites-NTOSFRA-Site/default/OrderGroove-PurchasePostTracking"
-</script>
-
-<script type="text/javascript">
-window.OrdergrooveLegacyOffers = false
-</script>
-
-<![endif]-->
-
-        <span class="api-true  tracking-consent" data-caOnline="true"
-            data-url="/on/demandware.store/Sites-NTOSFRA-Site/default/ConsentTracking-GetContent?cid=tracking_hint"
-            data-reject="/on/demandware.store/Sites-NTOSFRA-Site/default/ConsentTracking-SetSession?consent=false"
-            data-accept="/on/demandware.store/Sites-NTOSFRA-Site/default/ConsentTracking-SetSession?consent=true"
-            data-acceptText="Yes" data-rejectText="No" data-heading="Tracking Consent"></span>
-
+        <main class="py-4">
+            @yield('content')
+        </main>
     </div>
-
-    <script src="https://cdn.cquotient.com/js/v2/gretel.min.js" type="text/javascript" async="async"></script>
-
-    <!-- Evergage -->
-    {{config('app.hoge')}}
-    <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 </body>
-
 </html>

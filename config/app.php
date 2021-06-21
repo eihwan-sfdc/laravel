@@ -2,9 +2,15 @@
 
 return [
 
-    'hoge' => 'hogehoge',
     'EVERGAGE_ACCOUNT' => env('EVERGAGE_ACCOUNT', null),
     'EVERGAGE_DATASET' => env('EVERGAGE_DATASET', null),
+    'API_CLIENT_ID' => env('API_CLIENT_ID', null),
+    'API_CLIENT_SECRET' => env('API_CLIENT_SECRET', null),
+    'API_SUBDOMAIN' => env('API_SUBDOMAIN', null),
+    'API_AUTH_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.auth.marketingcloudapis.com/',
+    'API_REST_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.rest.marketingcloudapis.com/',
+    'API_SOAP_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.soap.marketingcloudapis.com/',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
