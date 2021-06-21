@@ -40,6 +40,21 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+                            <div class="col-md-6">
+                                <input type="radio" class="col-md-1 col-form-label text-md-right" name="gender" value="MEN" checked="checked">MEN
+                                <input type="radio" class="col-md-1 col-form-label text-md-right" name="gender" value="WOMEN" >WOMEN
+                                
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">

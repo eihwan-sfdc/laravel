@@ -40,9 +40,9 @@ class DeleteBeaconsBatch extends Command
      */
     public function handle()
     {
-        //$this->_deleteBeacons();
-        $beacons = $this->_getBeacons();
-        echo count($beacons);
+        $this->_deleteBeacons();
+        // $beacons = $this->_getBeacons();
+        // echo count($beacons);
         return 0;
     }
 
