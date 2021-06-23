@@ -2,66 +2,64 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="row home-categories">
-            <div class="col-sm-4">
-                <div class="category mens">
-                    <a href="/shop/mens">
-                        <span class="circle">
-                            <span class="title">MENS</span>
-                        </span>
-                    </a>
-                </div>
+    <div class="row home-categories">
+        <div class="col-sm-4">
+            <div class="category mens">
+                <a href="/category/mens">
+                    <span class="circle">
+                        <span class="title">MENS</span>
+                    </span>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <div class="category womens">
-                    <a href="/shop/womens">
-                        <span class="circle">
-                            <span class="title">WOMENS</span>
-                        </span>
-                    </a>
-                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="category womens">
+                <a href="/category/womens">
+                    <span class="circle">
+                        <span class="title">WOMENS</span>
+                    </span>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <div class="category kids">
-                    <a href="/shop/kids">
-                        <span class="circle">
-                            <span class="title">KIDS</span>
-                        </span>
-                    </a>
-                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="category kids">
+                <a href="/category/kids">
+                    <span class="circle">
+                        <span class="title">KIDS</span>
+                    </span>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <div class="category gear">
-                    <a href="/shop/gear">
-                        <span class="circle">
-                            <span class="title">GEAR</span>
-                        </span>
-                    </a>
-                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="category gear">
+                <a href="/category/gear">
+                    <span class="circle">
+                        <span class="title">GEAR</span>
+                    </span>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <div class="category electronics">
-                    <a href="/shop/electronics">
-                        <span class="circle">
-                            <span class="title">ELECTRONICS</span>
-                        </span>
-                    </a>
-                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="category electronics">
+                <a href="/category/electronics">
+                    <span class="circle">
+                        <span class="title">ELECTRONICS</span>
+                    </span>
+                </a>
             </div>
-            <div class="col-sm-4">
-                <div class="category energy-and-nutrition">
-                    <a href="/shop/energy-and-nutrition">
-                        <span class="circle">
-                            <span class="title">ENERGY &amp; NUTRITION</span>
-                        </span>
-                    </a>
-                </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="category energy-and-nutrition">
+                <a href="/category/energy-and-nutrition">
+                    <span class="circle">
+                        <span class="title">ENERGY &amp; NUTRITION</span>
+                    </span>
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="recs">
+    <div class="row recs">
         <div id="product_rec">
             <div class="igo_boxhead">
                 <h2>ここも Recomenndation を出すように修正</h2>
