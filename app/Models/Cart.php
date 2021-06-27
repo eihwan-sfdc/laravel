@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Cart extends Model
 {
     use HasFactory;
+
+    public $timestamps = false;
 
     /**
      * The attributes that are mass assignable.
@@ -15,14 +17,9 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'name',
-        'category',
-        'gender',
-        'color',
-        'image_url',
-        'standard_price',
-        'sale_price',
+        'user_id',
+        'product_id',
     ];
 
-    const CREATED_AT = 'creation_date';
+    const CREATED_AT = 'creation_at';
 }

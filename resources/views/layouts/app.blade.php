@@ -58,6 +58,9 @@
                             <a id="navbarDropdown" class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
+                            <a id="navbarDropdown" class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('CART') }}
+                            </a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                     document.getElementById('logout-form').submit();">
@@ -77,6 +80,7 @@
             @yield('content')
         </main>
     </div>
-    
+
+    @yield('javascript')
 </body>
 </html>

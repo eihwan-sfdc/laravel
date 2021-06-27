@@ -25,7 +25,7 @@
             <div class="category kids">
                 <a href="/category/kids">
                     <span class="circle">
-                        <span class="title">KIDS</span>
+                        <span class="title">KIDS<br>(no data)</span>
                     </span>
                 </a>
             </div>
@@ -34,7 +34,7 @@
             <div class="category gear">
                 <a href="/category/gear">
                     <span class="circle">
-                        <span class="title">GEAR</span>
+                        <span class="title">GEAR<br>(no data)</span>
                     </span>
                 </a>
             </div>
@@ -43,7 +43,7 @@
             <div class="category electronics">
                 <a href="/category/electronics">
                     <span class="circle">
-                        <span class="title">ELECTRONICS</span>
+                        <span class="title">ELECTRONICS<br>(no data)</span>
                     </span>
                 </a>
             </div>
@@ -52,7 +52,7 @@
             <div class="category energy-and-nutrition">
                 <a href="/category/energy-and-nutrition">
                     <span class="circle">
-                        <span class="title">ENERGY &amp; NUTRITION</span>
+                        <span class="title">ENERGY &amp; NUTRITION<br>(no data)</span>
                     </span>
                 </a>
             </div>

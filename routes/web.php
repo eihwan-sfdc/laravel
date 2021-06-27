@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +22,16 @@ Route::get('/', function () {
 
 Route::get('/category/{name}', [ProductController::class, 'category']);
 
+Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
+Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
+Route::get('/checkout_complete', function(){
+    return view('checkout_complete');
+});
+
+Route::post('/product/add_to_cart', [ProductController::class, 'add_to_cart'])->middleware('auth');
+
+Route::post('/product/add_to_wishlist', [ProductController::class, 'add_to_wishlist'])->middleware('auth');
 
 
 Route::get('/dashboard', function () {

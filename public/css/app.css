@@ -1,7 +1,6 @@
 @charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,600);
 @import url(https://fonts.googleapis.com/icon?family=Material+Icons);
-
 /*
   Mixin for creating pseudo elements
 */
@@ -15771,7 +15770,7 @@ mark, .mark {
 }
 
 .img-fluid {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
 }
 
@@ -38034,10 +38033,6 @@ button::disabled, a::disabled {
     cursor: not-allowed;
 }
 
-.img-fluid {
-    width: 100%;
-}
-
 .main-content {
     overflow-x: hidden;
     padding-bottom: 3rem;
@@ -42048,7 +42043,7 @@ span.flatpickr-weekday {
 }
 
 .recs .igo_product img {
-    max-width: 100%;
+    max-width: 50%;
 }
 
 .recs .igo_product a:last-of-type {
@@ -42104,7 +42099,6 @@ span.flatpickr-weekday {
     width: 68%;
 }
 
-
 @media (max-width: 500px) {
     .categories-overview .category {
         margin-bottom: 25px;
@@ -42127,14 +42121,13 @@ span.flatpickr-weekday {
     }
 }
 
-
-
-
 .footer {
-  background-color: #393939;
-  border-top: 5px solid #6ccdf0;
-  color: #e6e6e6; }
-  .footer .container {
+    background-color: #393939;
+    border-top: 5px solid #6ccdf0;
+    color: #e6e6e6;
+}
+
+.footer .container {
     padding: 45px 45px 25px 45px;
     display: -webkit-box;
     display: -moz-flex;
@@ -42152,95 +42145,174 @@ span.flatpickr-weekday {
     -webkit-box-orient: vertical;
     -moz-flex-direction: column;
     -ms-flex-direction: column;
-    flex-direction: column; }
-    .footer .container .footer-brand {
-      background: url("//s3.amazonaws.com/nto/images/logo-footer.png") no-repeat center center;
-      height: 80px;
-      margin-bottom: 35px;
-      -webkit-transition: background 0.2s ease-in-out;
-      transition: background 0.2s ease-in-out;
-      width: 55px; }
-      .footer .container .footer-brand:hover {
-        background: url("//s3.amazonaws.com/nto/images/logo-footer-hover.png") no-repeat center center; }
-      .footer .container .footer-brand a {
-        display: block;
-        height: 100%;
-        margin: 0;
-        width: 100%; }
-    .footer .container .navigation {
-      display: -webkit-box;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: horizontal;
-      -moz-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      text-align: center; }
-    .footer .container hr {
-      border: 0;
-      border-top: 1px solid #565656;
-      margin-bottom: 20px;
-      margin-top: 20px;
-      width: 100%; }
-    .footer .container .social {
-      display: -webkit-box;
-      display: -moz-flex;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-direction: normal;
-      -webkit-box-orient: horizontal;
-      -moz-flex-direction: row;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      padding-top: 25px; }
-      .footer .container .social li {
-        background-color: #000;
-        height: 30px;
-        margin: 0 10px;
-        width: 30px;
-        -webkit-transition: background 0.1s ease-in-out;
-        transition: background 0.1s ease-in-out; }
-        .footer .container .social li a {
-          display: block;
-          height: 100%;
-          margin: 0;
-          width: 100%; }
-      .footer .container .social .facebook {
-        background: url("//s3.amazonaws.com/nto/images/social-facebook.png") no-repeat center center; }
-        .footer .container .social .facebook:hover {
-          background: url("//s3.amazonaws.com/nto/images/social-facebook-hover.png") no-repeat center center; }
-      .footer .container .social .twitter {
-        background: url("//s3.amazonaws.com/nto/images/social-twitter.png") no-repeat center center; }
-        .footer .container .social .twitter:hover {
-          background: url("//s3.amazonaws.com/nto/images/social-twitter-hover.png") no-repeat center center; }
-      .footer .container .social .pinterest {
-        background: url("//s3.amazonaws.com/nto/images/social-pinterest.png") no-repeat center center; }
-        .footer .container .social .pinterest:hover {
-          background: url("//s3.amazonaws.com/nto/images/social-pinterest-hover.png") no-repeat center center; }
-      .footer .container .social .email {
-        background: url("//s3.amazonaws.com/nto/images/social-email.png") no-repeat center center; }
-        .footer .container .social .email:hover {
-          background: url("//s3.amazonaws.com/nto/images/social-email-hover.png") no-repeat center center; }
-      .footer .container .social .app {
-        background: url("//s3.amazonaws.com/nto/images/social-app.png") no-repeat center center; }
-        .footer .container .social .app:hover {
-          background: url("//s3.amazonaws.com/nto/images/social-app-hover.png") no-repeat center center; }
-  .footer .disclaimer {
+    flex-direction: column;
+}
+
+.footer .container .footer-brand {
+    background: url("//s3.amazonaws.com/nto/images/logo-footer.png") no-repeat center center;
+    height: 80px;
+    margin-bottom: 35px;
+    -webkit-transition: background 0.2s ease-in-out;
+    transition: background 0.2s ease-in-out;
+    width: 55px;
+}
+
+.footer .container .footer-brand:hover {
+    background: url("//s3.amazonaws.com/nto/images/logo-footer-hover.png") no-repeat center center;
+}
+
+.footer .container .footer-brand a {
+    display: block;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.footer .container .navigation {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    text-align: center;
+}
+
+.footer .container hr {
+    border: 0;
+    border-top: 1px solid #565656;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.footer .container .social {
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    padding-top: 25px;
+}
+
+.footer .container .social li {
+    background-color: #000;
+    height: 30px;
+    margin: 0 10px;
+    width: 30px;
+    -webkit-transition: background 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
+}
+
+.footer .container .social li a {
+    display: block;
+    height: 100%;
+    margin: 0;
+    width: 100%;
+}
+
+.footer .container .social .facebook {
+    background: url("//s3.amazonaws.com/nto/images/social-facebook.png") no-repeat center center;
+}
+
+.footer .container .social .facebook:hover {
+    background: url("//s3.amazonaws.com/nto/images/social-facebook-hover.png") no-repeat center center;
+}
+
+.footer .container .social .twitter {
+    background: url("//s3.amazonaws.com/nto/images/social-twitter.png") no-repeat center center;
+}
+
+.footer .container .social .twitter:hover {
+    background: url("//s3.amazonaws.com/nto/images/social-twitter-hover.png") no-repeat center center;
+}
+
+.footer .container .social .pinterest {
+    background: url("//s3.amazonaws.com/nto/images/social-pinterest.png") no-repeat center center;
+}
+
+.footer .container .social .pinterest:hover {
+    background: url("//s3.amazonaws.com/nto/images/social-pinterest-hover.png") no-repeat center center;
+}
+
+.footer .container .social .email {
+    background: url("//s3.amazonaws.com/nto/images/social-email.png") no-repeat center center;
+}
+
+.footer .container .social .email:hover {
+    background: url("//s3.amazonaws.com/nto/images/social-email-hover.png") no-repeat center center;
+}
+
+.footer .container .social .app {
+    background: url("//s3.amazonaws.com/nto/images/social-app.png") no-repeat center center;
+}
+
+.footer .container .social .app:hover {
+    background: url("//s3.amazonaws.com/nto/images/social-app-hover.png") no-repeat center center;
+}
+
+.footer .disclaimer {
     background-color: shade(#393939, 25%);
     min-height: 100px;
     padding: 15px;
-    text-align: center; }
-    .footer .disclaimer a {
-      color: #777; }
-      .footer .disclaimer a:hover {
-        color: #0d7fb3; }
-    .footer .disclaimer .salesforce {
-      background: url("//s3.amazonaws.com/nto/images/logo-salesforce.svg") no-repeat center center;
-      background-size: contain;
-      display: inline-block;
-      height: 37px;
-      position: relative;
-      top: 16px;
-      width: 60px; }
+    text-align: center;
+}
+
+.footer .disclaimer a {
+    color: #777;
+}
+
+.footer .disclaimer a:hover {
+    color: #0d7fb3;
+}
+
+.footer .disclaimer .salesforce {
+    background: url("//s3.amazonaws.com/nto/images/logo-salesforce.svg") no-repeat center center;
+    background-size: contain;
+    display: inline-block;
+    height: 37px;
+    position: relative;
+    top: 16px;
+    width: 60px;
+}
+
+
+
+
+
+/*
+  Mixin for creating pseudo elements
+*/
+/*
+  Mixins to support bootstrap spacing
+ */
+ .page-title {
+    font-weight: 600; }
+  
+  .continue-shopping-link {
+    font-size: 0.8125rem;
+    color: #393939;
+    font-weight: 600;
+    text-transform: uppercase; }
+  
+  .totals {
+    background-color: #f8f8f8; }
+  
+  .cart-page .approaching-discounts {
+    background-color: #f8f8f8;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem; }
+  
+  .cart-page .line-item-attributes-name,
+  .cart-page .qty-card-quantity-label {
+    font-weight: 600; }
+  
+  /*# sourceMappingURL=cart.css.map*/

@@ -16,19 +16,13 @@
                     <a href="/detail/{{$item['id']}}">
                         {{$item['name']}}
                     </a>
-                    <div class="igo_product_sale_price"><span class="igo_product_sale_price_label"></span><span class="igo_product_sale_price_value">{{$item['standard_price']}}</span></div>
-                    <div class="igo_product_regular_price"><span class="igo_product_regular_price_label"></span><span class="igo_product_regular_price_value">{{$item['sale_price']}}</span></div>
+                    <div class="igo_product_sale_price"><span class="igo_product_sale_price_label"></span><span class="igo_product_sale_price_value">{{$item['regular_price']}}$</span></div>
+                    <div class="igo_product_regular_price"><span class="igo_product_regular_price_label"></span><span class="igo_product_regular_price_value">{{$item['sale_price']}}$</span></div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
-
-
-
-
-    <br />
-
 </div>
 
 
