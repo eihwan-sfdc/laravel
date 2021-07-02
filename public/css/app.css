@@ -42316,3 +42316,39 @@ span.flatpickr-weekday {
     font-weight: 600; }
   
   /*# sourceMappingURL=cart.css.map*/
+
+
+
+
+
+  .footer {
+    background-color: #393939;
+    border-top: 5px solid #6ccdf0;
+    color: #e6e6e6; }
+    .footer .container {
+      padding: 45px 45px 25px 45px;
+      display: -webkit-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      -webkit-box-pack: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      -webkit-box-align: center;
+      -moz-align-items: center;
+      align-items: center;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .footer .container .footer-brand {
+        background: url("/images/logo-footer.png") no-repeat center center;
+        height: 80px;
+        margin-bottom: 35px;
+        -webkit-transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out;
+        width: 55px; }
+

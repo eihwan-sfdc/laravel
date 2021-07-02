@@ -86,7 +86,6 @@ var CCM_REL = "";
         <header
           id="header"
           class="container"
-          style=""
         >
               <p class="slide_menu">
     <span id="slide-menu-trigger" class="slide-trigger">
