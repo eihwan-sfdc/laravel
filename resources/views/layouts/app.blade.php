@@ -87,8 +87,8 @@
         <footer class="footer">
             <div class="container">
                 <div class="footer-brand">
-                    
                 </div>
+                this website is created for private study and no order will be processed.
             </div>
         </footer>
 
