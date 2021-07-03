@@ -43,9 +43,10 @@
                         <div class="pdp-checkout-button d-flex">
                             <form method="post" action="" id="form">
                                 @csrf
-                                <input type="hidden" name="product_id" value="{{$item['id']}}">
+                                <input type="hidden" name="product_id" class="product-detail" value="{{$item['id']}}" data-pid="{{$item['id']}}" data-pname="{{$item['name']}}" data-category="{{$item['category']}}" data-regularprice="{{$item['regular_price']}}" data-saleprice="{{$item['sale_price']}}">
+
                             </form>
-                            <button type="submit" class="add-to-cart btn btn-primary flex-grow-1" data-pid="1050279A1T" id="addToCartButton">
+                            <button type="submit" class="add-to-cart btn btn-primary flex-grow-1" id="addToCartButton">
                                 <span class="ml-1">
                                     Add to Cart
                                 </span>
@@ -63,18 +64,19 @@
         <div class="recs">
             <div id="product_rec">
                 <div class="igo_boxhead">
-                    <h2>ここは今後レコメンド製品を出す</h2>
+                    <h2>ここは MC Einstein Recommendation</h2>
                 </div>
                 <div class="igo_boxbody">
                     <div class="igo_product">
-                        <a href="/detail/{{$item['id']}}">
-                            <img class="igo_product_image" src="{{ asset('images/product/')}}/{{$item['id']}}.jpg">
-                        </a>
-                        <a href="/detail/{{$item['id']}}">
-                            {{$item['name']}}
-                        </a>
-                        <div class="igo_product_sale_price"><span class="igo_product_sale_price_label"></span><span class="igo_product_sale_price_value">{{$item['regular_price']}}$</span></div>
-                        <div class="igo_product_regular_price"><span class="igo_product_regular_price_label"></span><span class="igo_product_regular_price_value">{{$item['sale_price']}}$</span></div>
+                        
+                    </div>
+                </div>
+                <div class="igo_boxhead">
+                    <h2>ここは MC Evergage Recommendation</h2>
+                </div>
+                <div class="igo_boxbody">
+                    <div class="evergage_product">
+                        
                     </div>
                 </div>
             </div>
