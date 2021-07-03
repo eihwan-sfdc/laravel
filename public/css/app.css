@@ -247,3 +247,97 @@
 
 
 
+
+.add-to-cart, .add-to-cart-global, .add-to-wishlist {
+    flex-basis: 0;
+    -webkit-box-flex: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (max-width: 575.98px) {
+    .add-to-cart, .add-to-cart-global, .add-to-wishlist {
+        max-width: 100%;
+    }
+}
+
+
+
+
+.product-info {
+    border-bottom: 1px solid #e6e6e6;
+    border-left: 1px solid #e6e6e6;
+    border-right: 1px solid #e6e6e6;
+}
+
+.product-info:first-of-type {
+    border-top: 1px solid #e6e6e6;
+}
+
+.product-info .product-edit {
+    color: #ababab;
+}
+
+.product-info .product-edit a {
+    color: #ababab;
+    text-transform: uppercase;
+    margin-right: 0.5rem;
+    font-size: 0.75rem;
+}
+
+.product-info .product-edit a:last-of-type {
+    margin-right: 0;
+}
+
+.product-info .line-item-availability-status {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.product-info .line-item-availability-status::before {
+    margin-right: 0.25rem;
+}
+
+.product-info .line-item-availability-status.in-stock {
+    color: #88c290;
+}
+
+.product-info .line-item-availability-status.in-stock::before {
+    content: "ï˜";
+    display: inline-block;
+    font-family: "Font Awesome 5 Pro";
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-weight: 300;
+}
+
+.product-info .bonus-line-item-msg {
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.item-image {
+    -webkit-box-flex: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    height: 100px;
+    margin-right: 0.938em;
+    width: 100px;
+}
+
+.item-image img.product-image {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+
+.non-adjusted-price {
+    display: none;
+}
