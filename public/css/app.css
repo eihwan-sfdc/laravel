@@ -1,0 +1,249 @@
+  .footer {
+    background-color: #393939;
+    border-top: 5px solid #6ccdf0;
+    color: #e6e6e6; }
+    .footer .container {
+      padding: 45px 45px 25px 45px;
+      display: -webkit-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-pack: center;
+      -webkit-box-pack: center;
+      -moz-justify-content: center;
+      justify-content: center;
+      -ms-flex-align: center;
+      -webkit-box-align: center;
+      -moz-align-items: center;
+      align-items: center;
+      -webkit-box-direction: normal;
+      -webkit-box-orient: vertical;
+      -moz-flex-direction: column;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .footer .container .footer-brand {
+        background: url("/images/logo-footer.png") no-repeat center center;
+        height: 80px;
+        margin-bottom: 35px;
+        -webkit-transition: background 0.2s ease-in-out;
+        transition: background 0.2s ease-in-out;
+        width: 55px; }
+
+
+
+.row {
+    display: -webkit-box;
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+
+.home-categories {
+    background: #000;
+    padding: 0;
+}
+
+.home-categories .col-sm-3, .home-categories .col-sm-4, .home-categories .col-sm-6 {
+    overflow: hidden;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.home-categories .col-sm-3 .category, .home-categories .col-sm-4 .category, .home-categories .col-sm-6 .category {
+    height: 250px;
+    width: 100%;
+}
+
+.home-categories .col-sm-3 .category a, .home-categories .col-sm-4 .category a, .home-categories .col-sm-6 .category a {
+    color: #fff;
+    display: block;
+    height: 100%;
+    text-align: center;
+    width: 100%;
+}
+
+.home-categories .col-sm-3 .category a:hover, .home-categories .col-sm-4 .category a:hover, .home-categories .col-sm-6 .category a:hover {
+    color: #fff;
+}
+
+.home-categories .col-sm-3 .category a .circle, .home-categories .col-sm-4 .category a .circle, .home-categories .col-sm-6 .category a .circle {
+    background: rgba(22, 22, 22, 0.4);
+    border-radius: 390px;
+    display: block;
+    font-size: 30px;
+    height: 200px;
+    margin: 0 auto;
+    position: relative;
+    top: 9%;
+    width: 200px;
+}
+
+.home-categories .col-sm-3 .category a .circle .title, .home-categories .col-sm-4 .category a .circle .title, .home-categories .col-sm-6 .category a .circle .title {
+    position: relative;
+    top: 39%;
+}
+
+.home-categories .col-sm-3 .mens, .home-categories .col-sm-4 .mens, .home-categories .col-sm-6 .mens {
+    background: url("/images/home-mens.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .mens:hover, .home-categories .col-sm-4 .mens:hover, .home-categories .col-sm-6 .mens:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.home-categories .col-sm-3 .womens, .home-categories .col-sm-4 .womens, .home-categories .col-sm-6 .womens {
+    background: url("/images/home-womens.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .womens:hover, .home-categories .col-sm-4 .womens:hover, .home-categories .col-sm-6 .womens:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.home-categories .col-sm-3 .gear, .home-categories .col-sm-4 .gear, .home-categories .col-sm-6 .gear {
+    background: url("/images/home-gear.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .gear:hover, .home-categories .col-sm-4 .gear:hover, .home-categories .col-sm-6 .gear:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.home-categories .col-sm-3 .kids, .home-categories .col-sm-4 .kids, .home-categories .col-sm-6 .kids {
+    background: url("/images/home-kids.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .kids:hover, .home-categories .col-sm-4 .kids:hover, .home-categories .col-sm-6 .kids:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.home-categories .col-sm-3 .electronics, .home-categories .col-sm-4 .electronics, .home-categories .col-sm-6 .electronics {
+    background: url("/images/home-electronics.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .electronics:hover, .home-categories .col-sm-4 .electronics:hover, .home-categories .col-sm-6 .electronics:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.home-categories .col-sm-3 .energy-and-nutrition, .home-categories .col-sm-4 .energy-and-nutrition, .home-categories .col-sm-6 .energy-and-nutrition {
+    background: url("/images/home-energy-and-nutrition.png") no-repeat center center;
+    background-size: cover;
+    -webkit-transition: ease-in-out, -webkit-transform 0.2s;
+    transition: ease-in-out, -webkit-transform 0.2s;
+    transition: transform 0.2s, ease-in-out;
+    transition: transform 0.2s, ease-in-out, -webkit-transform 0.2s;
+}
+
+.home-categories .col-sm-3 .energy-and-nutrition .title, .home-categories .col-sm-4 .energy-and-nutrition .title, .home-categories .col-sm-6 .energy-and-nutrition .title {
+    top: 30%;
+}
+
+.home-categories .col-sm-3 .energy-and-nutrition:hover, .home-categories .col-sm-4 .energy-and-nutrition:hover, .home-categories .col-sm-6 .energy-and-nutrition:hover {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+
+
+
+.recs {
+    overflow: auto;
+    padding: 60px 40px 40px 40px;
+}
+
+.recs #product_rec {
+    text-align: center;
+}
+
+.recs .igo_boxhead h2 {
+    background-color: #eee;
+    border: 1px solid #565656;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 600;
+    padding: 12px 25px;
+    position: relative;
+    z-index: 2;
+}
+
+
+.recs .igo_product {
+    background: #fff;
+    float: left;
+    margin: 20px 1%;
+    padding: 40px 10px 50px 10px;
+    text-align: center;
+    width: 23.5%;
+}
+
+.recs .igo_product:first-child {
+    margin: 20px 1% 20px 0;
+}
+
+.recs .igo_product:last-child {
+    margin: 20px 0 20px 1%;
+}
+
+.recs .igo_product img {
+    max-width: 50%;
+}
+
+.recs .igo_product a:last-of-type {
+    display: block;
+    font-size: 110%;
+    font-weight: 700;
+    height: 45px;
+    margin-top: 15px;
+}
+
+.recs .igo_product .igo_product_sale_price, .recs .igo_product .igo_product_regular_price {
+    display: inline-block;
+}
+
+.recs .igo_product .igo_product_sale_price_value {
+    color: #0d7fb3;
+    font-size: 110%;
+    font-weight: 600;
+}
+
+.recs .igo_product .igo_product_regular_price_value {
+    color: #919191;
+    display: inline-block;
+    font-size: 110%;
+    margin-left: 3px;
+    text-decoration: line-through;
+}
+
+
+
+
