@@ -10,19 +10,22 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
     <!-- Scripts -->
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Evergage -->
     <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" >
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- Einstein Recommendation -->
+    <script type="text/javascript" async src="//1482497.collect.igodigital.com/collect.js"></script>
 </head>
 
 <body>
@@ -94,6 +97,22 @@
 
 
     </div>
+
+    @guest
+    <script>
+        var _etmc = [];
+        _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
+        _etmc.push(["trackPageView"]);
+    </script>
+    @else
+    <script>
+        _etmc.push(["setOrgId", "1482497"]);
+        _etmc.push(["setUserInfo", {
+            "email": "{{ Auth::user()->email }}"
+        }]);
+        _etmc.push(["trackPageView"]);
+    </script>
+    @endguest
 
     @yield('javascript')
 </body>

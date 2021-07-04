@@ -27,3 +27,9 @@
 
 
 @endsection
+
+@section('javascript')
+<script>
+  _etmc.push(["trackPageView", { "category" : "{{$item['category']}}" }]);
+</script>
+@endsection

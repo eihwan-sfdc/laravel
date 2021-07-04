@@ -90,7 +90,10 @@
 
 
 @section('javascript')
-<script type="text/javascript">
+<script>
+  _etmc.push(["trackPageView", { "item" : "{{$item['id']}}" }]);
+</script>
+<script>
     $(function() {
 
         // カートへ追加

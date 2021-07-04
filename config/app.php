@@ -4,6 +4,7 @@ return [
 
     'EVERGAGE_ACCOUNT' => env('EVERGAGE_ACCOUNT', null),
     'EVERGAGE_DATASET' => env('EVERGAGE_DATASET', null),
+    'MID' => env('MID', null),
     'API_CLIENT_ID' => env('API_CLIENT_ID', null),
     'API_CLIENT_SECRET' => env('API_CLIENT_SECRET', null),
     'API_SUBDOMAIN' => env('API_SUBDOMAIN', null),

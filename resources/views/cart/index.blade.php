@@ -117,6 +117,31 @@
 
 
 @section('javascript')
+<script>
+    function getNow() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var mon = now.getMonth() + 1; //１を足すこと
+        var day = now.getDate();
+        var hour = now.getHours();
+        var min = now.getMinutes();
+        var sec = now.getSeconds();
+
+        //出力用
+        var s = year + "/" + mon + "/" + day + " " + hour + ":" + min + ":" + sec + "";
+        return s;
+    }
+    _etmc.push(["trackCart", {
+        "cart": [{
+                "item": "{{$item['id']}}",
+                "quantity": "1",
+                "price": "{{$item['regular_price']}}",
+                "unique_id": "{{$item['id']}}" + this.getNow(),
+            }
+        ]
+    }]);
+</script>
+
 <script type="text/javascript">
     $(function() {
 
