@@ -93,9 +93,6 @@
 
 @section('javascript')
 <script>
-  _etmc.push(["trackPageView", { "item" : "{{$item['id']}}" }]);
-</script>
-<script>
     $(function() {
 
         // カートへ追加
@@ -113,6 +110,8 @@
             form.attr("action", "/product/add_to_wishlist");
             form.submit();
         });
+
+        _etmc.push(["trackPageView", { "item" : "{{$item['id']}}" }]);
     });
 </script>
 @endsection

@@ -98,6 +98,8 @@
 
     </div>
 
+    @yield('javascript')
+
     @guest
     <script>
         var _etmc = [];
@@ -111,8 +113,6 @@
         }]);
     </script>
     @endguest
-
-    @yield('javascript')
 </body>
 
 </html>
