@@ -106,11 +106,9 @@
     </script>
     @else
     <script>
-        _etmc.push(["setOrgId", "1482497"]);
         _etmc.push(["setUserInfo", {
             "email": "{{ Auth::user()->email }}"
         }]);
-        _etmc.push(["trackPageView"]);
     </script>
     @endguest
 
