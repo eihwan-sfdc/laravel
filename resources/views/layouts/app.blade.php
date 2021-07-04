@@ -25,7 +25,7 @@
     <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 
     <!-- Einstein Recommendation -->
-    <script type="text/javascript" async src="//1482497.collect.igodigital.com/collect.js"></script>
+    <script type="text/javascript" async src="//{{config('app.MID')}}.collect.igodigital.com/collect.js"></script>
 </head>
 
 <body>
