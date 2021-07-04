@@ -43,7 +43,9 @@
                         <div class="pdp-checkout-button d-flex">
                             <form method="post" action="" id="form">
                                 @csrf
-                                <input type="hidden" name="product_id" class="product-detail" value="{{$item['id']}}" data-pid="{{$item['id']}}" data-pname="{{$item['name']}}" data-category="{{$item['category']}}" data-regularprice="{{$item['regular_price']}}" data-saleprice="{{$item['sale_price']}}">
+                                <input type="hidden" name="product_id" class="product-detail" value="{{$item['id']}}" 
+                                data-pid="{{$item['id']}}" data-pname="{{$item['name']}}" data-category="{{$item['category']}}" 
+                                data-regularprice="{{$item['regular_price']}}" data-saleprice="{{$item['sale_price']}}" data-gender="{{$item['gender']}}" >
 
                             </form>
                             <button type="submit" class="add-to-cart btn btn-primary flex-grow-1" id="addToCartButton">
