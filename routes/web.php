@@ -21,7 +21,6 @@ Route::get('/', function () {
 });
 
 Route::get('/category/{name}', [ProductController::class, 'category']);
-
 Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
 Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
@@ -30,7 +29,6 @@ Route::get('/checkout_complete', function(){
 });
 
 Route::post('/product/add_to_cart', [ProductController::class, 'add_to_cart'])->middleware('auth');
-
 Route::post('/product/add_to_wishlist', [ProductController::class, 'add_to_wishlist'])->middleware('auth');
 
 

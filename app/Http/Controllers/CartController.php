@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 
+use Carbon\Carbon;
 
 class CartController extends Controller
 {
@@ -38,7 +39,8 @@ class CartController extends Controller
             $total_price = $total_price + $item['sale_price'];
         }
         $tax = $total_price / 10;
-        return view('cart.index', ['items' => $items, 'total_price' => $total_price, 'tax' => $tax]);
+        $date = Carbon::now();
+        return view('cart.index', ['items' => $items, 'total_price' => $total_price, 'tax' => $tax, 'timestamp' => $date->getTimestamp()]);
     }
 
     public function delete()
