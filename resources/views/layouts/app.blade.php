@@ -29,19 +29,18 @@
 </head>
 @guest
 <script>
-    $(function() {
-        var _etmc = [];
-        _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
-        _etmc.push(["trackPageView"]);
-    });
+    var _etmc = [];
+    _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
+    _etmc.push(["trackPageView"]);
 </script>
 @else
 <script>
-    $(function() {
-        _etmc.push(["setUserInfo", {
-            "email": "{{ Auth::user()->email }}"
-        }]);
-    });
+    var _etmc = [];
+    _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
+    _etmc.push(["setUserInfo", {
+        "email": "{{ Auth::user()->email }}"
+    }]);
+    _etmc.push(["trackPageView"]);
 </script>
 @endguest
 
