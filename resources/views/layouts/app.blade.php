@@ -27,6 +27,23 @@
     <!-- Einstein Recommendation -->
     <script type="text/javascript" async src="//{{config('app.MID')}}.collect.igodigital.com/collect.js"></script>
 </head>
+@guest
+<script>
+    $(function() {
+        var _etmc = [];
+        _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
+        _etmc.push(["trackPageView"]);
+    });
+</script>
+@else
+<script>
+    $(function() {
+        _etmc.push(["setUserInfo", {
+            "email": "{{ Auth::user()->email }}"
+        }]);
+    });
+</script>
+@endguest
 
 <body>
     <div id="app">
@@ -100,23 +117,6 @@
 
     @yield('javascript')
 
-    @guest
-    <script>
-        $(function() {
-            var _etmc = [];
-            _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
-            _etmc.push(["trackPageView"]);
-        });
-    </script>
-    @else
-    <script>
-        $(function() {
-            _etmc.push(["setUserInfo", {
-                "email": "{{ Auth::user()->email }}"
-            }]);
-        });
-    </script>
-    @endguest
 </body>
 
 </html>
