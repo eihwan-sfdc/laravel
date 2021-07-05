@@ -102,15 +102,19 @@
 
     @guest
     <script>
-        var _etmc = [];
-        _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
-        _etmc.push(["trackPageView"]);
+        $(function() {
+            var _etmc = [];
+            _etmc.push(["setOrgId", "{{config('app.MID')}}"]);
+            _etmc.push(["trackPageView"]);
+        });
     </script>
     @else
     <script>
-        _etmc.push(["setUserInfo", {
-            "email": "{{ Auth::user()->email }}"
-        }]);
+        $(function() {
+            _etmc.push(["setUserInfo", {
+                "email": "{{ Auth::user()->email }}"
+            }]);
+        });
     </script>
     @endguest
 </body>
