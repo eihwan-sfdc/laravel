@@ -15,7 +15,7 @@ class TokenizedSeeder extends Seeder
     public function run()
     {
         //
-        DB::table('tokenized')->insert(
+        DB::table('tokenized')->insert([
             [
                 'email_token' => 'abc@example.com',
                 'first_name' => 'Eihwan',
@@ -37,6 +37,6 @@ class TokenizedSeeder extends Seeder
                 'email_address' => 'eihwan.kim+yamada2@salesforce.com',
                 'subkey' => 'subkey003',
             ],
-        );
+        ]);
     }
 }
