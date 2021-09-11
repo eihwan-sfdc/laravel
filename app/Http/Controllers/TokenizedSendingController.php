@@ -27,7 +27,9 @@ class TokenizedSendingController extends Controller
         Log::emergency("\n*************** Tokenized Sending API called ***************\n");
         $this->log($request);
 
+        $body = $request->all();
 
+        
         return '{
     "resolvedTokens": [
         {
