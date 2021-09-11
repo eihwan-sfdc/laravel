@@ -42,4 +42,20 @@ class TokenizedSendingController extends Controller
         echo "gettest";
         return false;
     }
+
+    public function log(Request $request) {
+
+        $headers = [];
+        foreach (getallheaders() as $name => $value) {
+          $headers[$name] = $value;
+        }
+    
+        $body = $request->all();
+    
+        Log::emergency("\n*************** REQUEST HEADER ***************\n");
+        Log::emergency($headers);
+        Log::emergency("\n*************** REQUEST BODY ***************\n");
+        Log::emergency(json_encode($body));
+        Log::emergency("\n********************************************\n");
+      }
 }
