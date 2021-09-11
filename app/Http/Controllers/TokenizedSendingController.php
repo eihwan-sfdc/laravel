@@ -32,4 +32,9 @@ class TokenizedSendingController extends Controller
             ]
         }';
     }
+
+    public function gettest() {
+        echo "gettest";
+        return false;
+    }
 }

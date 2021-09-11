@@ -43,7 +43,7 @@ require __DIR__.'/auth.php';
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'basicauth'], function() {
-    Route::get('/basic-auth-test', function () {
-        return view('welcome');
-    });
+    //ここにBasic認証をかけたいルーティングの設定を記述して下さい
+    //例
+    Route::get('tokenized', 'TokenizedSendingController@gettest');
 });
