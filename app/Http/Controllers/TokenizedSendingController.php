@@ -27,15 +27,15 @@ class TokenizedSendingController extends Controller
         Log::emergency("\n*************** Tokenized Sending API called ***************\n");
         $this->log($request);
 
+
         return '{
-            "tokens": [
-              {
-                "tokenRequestId": "abc123thn567",
-                "token": "999911112222",
-              "subscriberKey": "abc123456xyz”
-              }
-            ]
-          }';
+    "resolvedTokens": [
+        {
+            "tokenRequestId":"abc123thn567",
+            "tokenValue": "user2@gmail.com"
+        }
+    ]
+}';
     }
 
     public function gettest() {
