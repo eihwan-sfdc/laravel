@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TokenizedSendingController extends Controller
 {
@@ -21,16 +22,20 @@ class TokenizedSendingController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
+        Log::emergency("\n*************** Tokenized Sending API called ***************\n");
+        $this->log($request);
+
         return '{
-            "resolvedTokens": [
-                {
-                    "tokenRequestId":"abc123thn567",
-                    "tokenValue": "user2@gmail.com"
-                }
+            "tokens": [
+              {
+                "tokenRequestId": "abc123thn567",
+                "token": "999911112222",
+              "subscriberKey": "abc123456xyz”
+              }
             ]
-        }';
+          }';
     }
 
     public function gettest() {
