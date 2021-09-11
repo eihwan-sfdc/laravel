@@ -17,6 +17,7 @@ class TokenizedSeeder extends Seeder
         //
         DB::table('tokenized')->insert(
             [
+                'id' => '1',
                 'email_token' => 'abc@example.com',
                 'first_name' => 'Eihwan',
                 'last_name' => 'Kim',
@@ -24,6 +25,7 @@ class TokenizedSeeder extends Seeder
                 'subkey' => 'subkey001',
             ],
             [
+                'id' => '2',
                 'email_token' => 'def@example.com',
                 'first_name' => 'Taro',
                 'last_name' => 'Yamada',
@@ -31,6 +33,7 @@ class TokenizedSeeder extends Seeder
                 'subkey' => 'subkey002',
             ],
             [
+                'id' => '3',
                 'email_token' => 'hij@example.com',
                 'first_name' => 'Taro2',
                 'last_name' => 'Yamada2',
