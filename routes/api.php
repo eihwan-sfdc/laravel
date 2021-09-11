@@ -21,6 +21,8 @@ Route::post('custom_activity/publish', 'CustomActivityController@custom_publish'
 Route::post('custom_activity/validate', 'CustomActivityController@custom_validate');
 Route::post('custom_activity/stop', 'CustomActivityController@custom_stop');
 
+Route::post('tokenized', 'TokenizedSendingController@index');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
