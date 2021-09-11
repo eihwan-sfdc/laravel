@@ -41,3 +41,9 @@ require __DIR__.'/auth.php';
 //Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::group(['middleware' => 'basicauth'], function() {
+    Route::get('/basic-auth-test', function () {
+        return view('welcome');
+    });
+});
