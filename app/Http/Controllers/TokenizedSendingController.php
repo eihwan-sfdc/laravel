@@ -37,11 +37,16 @@ class TokenizedSendingController extends Controller
                     ->where('email_token', $token)
                     ->get();
 
+        $subkey='';
+        foreach($items as $item) {
+            $subkey = $item['subkey'];
+        }
+        
         $resultArray = array();
-        if ($items) {
+        if ($subkey) {
             $resultArray['resolvedTokens'] = [];
             $resultArray['resolvedTokens']['tokenRequestId'] = $token;
-            $resultArray['resolvedTokens']['tokenValue'] = $items[0]['subkey'];
+            $resultArray['resolvedTokens']['tokenValue'] = $subkey;
         } else {
             $resultArray['unresolvedTokens'] = [];
             $resultArray['unresolvedTokens']['tokenRequestId'] = $token;
