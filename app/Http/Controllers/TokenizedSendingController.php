@@ -29,7 +29,11 @@ class TokenizedSendingController extends Controller
         $this->log($request);
 
         $tokens = $request->input('tokens');
+        
         $resultArray = array();
+        $resultArray['resolvedTokens'] = [];
+        $resultArray['unresolvedTokens'] = [];
+
         foreach ($tokens as $token){
             Log::emergency($token); 
             $tokenRequestId = $token['tokenRequestId'];
@@ -45,11 +49,9 @@ class TokenizedSendingController extends Controller
                 $last_name = $item->last_name;
 
                 if ($email_address) {
-                    $resultArray['resolvedTokens'] = [];
                     $resultArray['resolvedTokens'][$index]['tokenRequestId'] = $tokenRequestId;
                     $resultArray['resolvedTokens'][$index]['tokenValue'] = $email_address;
                 } else {
-                    $resultArray['unresolvedTokens'] = [];
                     $resultArray['unresolvedTokens'][$index]['tokenRequestId'] = $tokenRequestId;
                     $resultArray['unresolvedTokens'][$index]['message'] = 'Invalid token; token does not exist.' ;
                 }
