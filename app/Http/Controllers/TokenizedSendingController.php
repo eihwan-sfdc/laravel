@@ -30,10 +30,6 @@ class TokenizedSendingController extends Controller
 
         $tokens = $request->input('tokens');
 
-        // $token_array = json_decode($tokens);
-        Log::emergency("\n*************** TOKENS COUNT ***************\n");
-        Log::emergency(count($tokens));
-
         $resultArray = array();
         $resultArray['resolvedTokens'] = [];
         $resultArray['unresolvedTokens'] = [];
@@ -47,9 +43,6 @@ class TokenizedSendingController extends Controller
             ->where('email_token', $token['token'])
             ->get();
     
-            Log::emergency("\n*************** ITEMS COUNT ***************\n");
-            Log::emergency(count($items));
-
             if (count($items) > 0) {
 
                 foreach ($items as $item) {
@@ -68,13 +61,12 @@ class TokenizedSendingController extends Controller
                 }
 
             } else {
-                Log::emergency("\n*************** ||||||| UNRESOLVED START |||||| ***************\n");
                     
                 $res = array();
                 $res['tokenRequestId'] = $tokenRequestId;
                 $res['message'] = 'Invalid token; token does not exist.';
                 array_push($resultArray['unresolvedTokens'], $res);
-                Log::emergency("\n*************** ||||||| UNRESOLVED END |||||| ***************\n");
+
             }
             
         }
@@ -83,46 +75,6 @@ class TokenizedSendingController extends Controller
         Log::emergency(json_encode($resultArray));
         echo $response;
 
-        // $token = $tokens[0]['token'];
-        // $tokenRequestId = $tokens[0]['tokenRequestId'];
-        
-        
-        // $items = DB::table('tokenized')
-        //             ->select('*')
-        //             ->where('email_token', $token)
-        //             ->get();
-
-        // $email_address='';
-        // $resultArray = array();
-        // foreach($items as $item) {
-        //     $email_address = $item->email_address;
-        //     $first_name = $item->first_name;
-        //     $last_name = $item->last_name;
-
-        //     if ($email_address) {
-        //         $resultArray['resolvedTokens'] = [];
-        //         $resultArray['resolvedTokens'][0]['tokenRequestId'] = $tokenRequestId;
-        //         $resultArray['resolvedTokens'][0]['tokenValue'] = $email_address;
-        //     } else {
-        //         $resultArray['unresolvedTokens'] = [];
-        //         $resultArray['unresolvedTokens'][0]['tokenRequestId'] = $tokenRequestId;
-        //         $resultArray['unresolvedTokens'][0]['message'] = 'Invalid token; token does not exist.' ;
-        //     }
-
-        // }
-
-        
-        
-
-        // $response = json_encode($resultArray);
-        // Log::emergency(json_encode($resultArray));
-        // echo $response;
-
-    }
-
-    public function gettest() {
-        echo "gettest";
-        return false;
     }
 
     public function log(Request $request) {
