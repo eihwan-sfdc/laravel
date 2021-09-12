@@ -29,13 +29,16 @@ class TokenizedSendingController extends Controller
         $this->log($request);
 
         $tokens = $request->input('tokens');
-        $token_array = json_decode($tokens);
+
+        // $token_array = json_decode($tokens);
+        Log::emergency("\n*************** TOKENS COUNT ***************\n");
+        Log::emergency(count($tokens));
 
         $resultArray = array();
         $resultArray['resolvedTokens'] = [];
         $resultArray['unresolvedTokens'] = [];
 
-        foreach ($token_array as $token){
+        foreach ($tokens as $token){
             Log::emergency($token); 
             $tokenRequestId = $token['tokenRequestId'];
 
