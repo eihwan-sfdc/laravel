@@ -50,7 +50,7 @@ class TokenizedSendingController extends Controller
             Log::emergency("\n*************** ITEMS COUNT ***************\n");
             Log::emergency(count($items));
 
-            if ($items) {
+            if (count($items) > 0) {
 
                 foreach ($items as $item) {
                     $email_address = $item->email_address;
@@ -66,7 +66,7 @@ class TokenizedSendingController extends Controller
                         
                     }
                 }
-                
+
             } else {
                 Log::emergency("\n*************** ||||||| UNRESOLVED START |||||| ***************\n");
                     
