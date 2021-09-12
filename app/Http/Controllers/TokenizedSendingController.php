@@ -50,26 +50,33 @@ class TokenizedSendingController extends Controller
             Log::emergency("\n*************** ITEMS COUNT ***************\n");
             Log::emergency(count($items));
 
-            foreach ($items as $item) {
-                $email_address = $item->email_address;
-                $first_name = $item->first_name;
-                $last_name = $item->last_name;
+            if ($items) {
 
-                if ($email_address) {
-                    $res = array();
-                    $res['tokenRequestId'] = $tokenRequestId;
-                    $res['tokenValue'] = $email_address;
-                    array_push($resultArray['resolvedTokens'], $res);
-                } else {
-                    Log::emergency("\n*************** ||||||| UNRESOLVED START |||||| ***************\n");
-                    
-                    $res = array();
-                    $res['tokenRequestId'] = $tokenRequestId;
-                    $res['message'] = 'Invalid token; token does not exist.';
-                    array_push($resultArray['unresolvedTokens'], $res);
-                    Log::emergency("\n*************** ||||||| UNRESOLVED END |||||| ***************\n");
+                foreach ($items as $item) {
+                    $email_address = $item->email_address;
+                    $first_name = $item->first_name;
+                    $last_name = $item->last_name;
+    
+                    if ($email_address) {
+                        $res = array();
+                        $res['tokenRequestId'] = $tokenRequestId;
+                        $res['tokenValue'] = $email_address;
+                        array_push($resultArray['resolvedTokens'], $res);
+                    } else {
+                        
+                    }
                 }
+                
+            } else {
+                Log::emergency("\n*************** ||||||| UNRESOLVED START |||||| ***************\n");
+                    
+                $res = array();
+                $res['tokenRequestId'] = $tokenRequestId;
+                $res['message'] = 'Invalid token; token does not exist.';
+                array_push($resultArray['unresolvedTokens'], $res);
+                Log::emergency("\n*************** ||||||| UNRESOLVED END |||||| ***************\n");
             }
+            
         }
 
         $response = json_encode($resultArray);
