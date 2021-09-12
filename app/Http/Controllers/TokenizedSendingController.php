@@ -41,7 +41,7 @@ class TokenizedSendingController extends Controller
         foreach($items as $item) {
             $subkey = $item->subkey;
             $first_name = $item->first_name;
-            $last_name = $item->filast_namerst_name;
+            $last_name = $item->last_name;
         }
 
         $resultArray = array();
