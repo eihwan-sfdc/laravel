@@ -44,7 +44,7 @@ class TokenizedSendingController extends Controller
 
             $items = DB::table('tokenized')
             ->select('*')
-            ->where('email_token', $token)
+            ->where('email_token', $token['email_token'])
             ->get();
     
             Log::emergency("\n*************** ITEMS COUNT ***************\n");
