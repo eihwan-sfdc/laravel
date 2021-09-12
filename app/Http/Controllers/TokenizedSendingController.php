@@ -38,7 +38,7 @@ class TokenizedSendingController extends Controller
         $resultArray['resolvedTokens'] = [];
         $resultArray['unresolvedTokens'] = [];
 
-        foreach ($tokens as $token){
+        foreach ($tokens as $index => $token){
             Log::emergency($token); 
             $tokenRequestId = $token['tokenRequestId'];
 
@@ -50,7 +50,7 @@ class TokenizedSendingController extends Controller
             Log::emergency("\n*************** ITEMS COUNT ***************\n");
             Log::emergency(count($items));
 
-            foreach($items as $index => $item) {
+            foreach ($items as $item) {
                 $email_address = $item->email_address;
                 $first_name = $item->first_name;
                 $last_name = $item->last_name;
