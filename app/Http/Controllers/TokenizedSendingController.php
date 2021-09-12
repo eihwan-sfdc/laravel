@@ -56,11 +56,15 @@ class TokenizedSendingController extends Controller
                 $last_name = $item->last_name;
 
                 if ($email_address) {
-                    $resultArray['resolvedTokens'][$index]['tokenRequestId'] = $tokenRequestId;
-                    $resultArray['resolvedTokens'][$index]['tokenValue'] = $email_address;
+                    $res = array();
+                    $res['tokenRequestId'] = $tokenRequestId;
+                    $res['tokenValue'] = $email_address;
+                    array_push($resultArray['resolvedTokens'], $res);
                 } else {
-                    $resultArray['unresolvedTokens'][$index]['tokenRequestId'] = $tokenRequestId;
-                    $resultArray['unresolvedTokens'][$index]['message'] = 'Invalid token; token does not exist.' ;
+                    $res = array();
+                    $res['tokenRequestId'] = $tokenRequestId;
+                    $res['message'] = 'Invalid token; token does not exist.' ;
+                    array_push($resultArray['unresolvedTokens'], $res);
                 }
             }
         }
