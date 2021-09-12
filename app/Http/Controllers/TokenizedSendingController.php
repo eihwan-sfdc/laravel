@@ -39,9 +39,9 @@ class TokenizedSendingController extends Controller
 
         $subkey='';
         foreach($items as $item) {
-            $subkey = $item['subkey'];
+            $subkey = $item->subkey;
         }
-        
+
         $resultArray = array();
         if ($subkey) {
             $resultArray['resolvedTokens'] = [];
