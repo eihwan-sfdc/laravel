@@ -47,6 +47,9 @@ class TokenizedSendingController extends Controller
             ->where('email_token', $token)
             ->get();
     
+            Log::emergency("\n*************** ITEMS COUNT ***************\n");
+            Log::emergency(count($items));
+
             foreach($items as $index => $item) {
                 $email_address = $item->email_address;
                 $first_name = $item->first_name;
