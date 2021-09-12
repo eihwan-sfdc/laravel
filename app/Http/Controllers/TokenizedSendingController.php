@@ -61,10 +61,13 @@ class TokenizedSendingController extends Controller
                     $res['tokenValue'] = $email_address;
                     array_push($resultArray['resolvedTokens'], $res);
                 } else {
+                    Log::emergency("\n*************** ||||||| UNRESOLVED START |||||| ***************\n");
+                    
                     $res = array();
                     $res['tokenRequestId'] = $tokenRequestId;
-                    $res['message'] = 'Invalid token; token does not exist.' ;
+                    $res['message'] = 'Invalid token; token does not exist.';
                     array_push($resultArray['unresolvedTokens'], $res);
+                    Log::emergency("\n*************** ||||||| UNRESOLVED END |||||| ***************\n");
                 }
             }
         }
