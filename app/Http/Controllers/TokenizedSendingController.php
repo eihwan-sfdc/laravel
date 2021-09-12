@@ -27,10 +27,10 @@ class TokenizedSendingController extends Controller
         Log::emergency("\n*************** Tokenized Sending API called ***************\n");
         $this->log($request);
 
-        $token = $request->input('tokens.token');
+        $token = $request->input('tokens');
         Log::emergency($token);
 
-        
+
         
     }
 
