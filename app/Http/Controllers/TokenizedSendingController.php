@@ -45,12 +45,12 @@ class TokenizedSendingController extends Controller
         $resultArray = array();
         if ($subkey) {
             $resultArray['resolvedTokens'] = [];
-            $resultArray['resolvedTokens']['tokenRequestId'] = $token;
-            $resultArray['resolvedTokens']['tokenValue'] = $subkey;
+            $resultArray['resolvedTokens'][0]['tokenRequestId'] = $token;
+            $resultArray['resolvedTokens'][0]['tokenValue'] = $subkey;
         } else {
             $resultArray['unresolvedTokens'] = [];
-            $resultArray['unresolvedTokens']['tokenRequestId'] = $token;
-            $resultArray['unresolvedTokens']['message'] = 'Invalid token; token does not exist.' ;
+            $resultArray['unresolvedTokens'][0]['tokenRequestId'] = $token;
+            $resultArray['unresolvedTokens'][0]['message'] = 'Invalid token; token does not exist.' ;
         }
 
         $response = json_encode($resultArray);
