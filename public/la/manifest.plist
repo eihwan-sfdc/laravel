@@ -29,7 +29,7 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.eihwan.dev.learn</string>
+				<string>com.eihwan.dev.learn.legacy</string>
 				<key>bundle-version</key>
 				<string>7.2.1</string>
 				<key>kind</key>
