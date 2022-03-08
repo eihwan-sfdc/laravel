@@ -81,7 +81,7 @@
                             <a class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-                            <span class="logged-in-user-email" >
+                            <span class="logged-in-user-email" style="display:none">
                                 {{ Auth::user()->email }}
                             </span>
                             <a class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
