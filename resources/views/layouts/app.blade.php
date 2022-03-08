@@ -74,11 +74,11 @@
 
                             @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link logged-in" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                             @endif
                             @else
-                            <a id="navbarDropdown" class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a id="navbarDropdown" class="dropdown-item logged-in" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
                             <a id="navbarDropdown" class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
