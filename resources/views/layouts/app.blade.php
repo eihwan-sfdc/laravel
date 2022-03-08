@@ -78,13 +78,16 @@
                             </li>
                             @endif
                             @else
-                            <a id="navbarDropdown" class="dropdown-item logged-in" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a class="dropdown-item" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
-                            <a id="navbarDropdown" class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <span class="logged-in-user-email" >
+                                {{ Auth::user()->email }}
+                            </span>
+                            <a class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('CART') }}
                             </a>
-                            <a id="navbarDropdown" class="dropdown-item" href="/static" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            <a class="dropdown-item" href="/static" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('STATIC') }}
                             </a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
