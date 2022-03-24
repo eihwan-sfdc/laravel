@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
         // config(['package.auth_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.auth.marketingcloudapis.com/']);
         // config(['package.rest_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.rest.marketingcloudapis.com/']);
         // config(['package.soap_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.soap.marketingcloudapis.com/']);
-        
+
 
         //Evergate
         // config(['evergage.account' => 'ekim1482497']);
