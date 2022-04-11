@@ -15,8 +15,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap.min.css', true) }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css', true) }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
