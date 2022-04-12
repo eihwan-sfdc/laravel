@@ -23,13 +23,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
-        Schema::defaultStringLength(191);
-    }
-
     public function boot(UrlGenerator $url)
     {
+        //this is for DB length
+        Schema::defaultStringLength(191);
+
+        //this is for https route
         $url->forceScheme('https');
     }
 }
