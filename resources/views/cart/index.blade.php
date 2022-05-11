@@ -10,7 +10,7 @@
                 @foreach ($items as $item)
                 <input type="hidden" name="product_ids[]" value="{{$item['product_id']}}" />
                 <div class="cart-products">
-                    <div class="product-info   uuid-50ef52d6d9733f4a9ba05f526b p-2 p-md-4">
+                    <div class="product-info  p-2 p-md-4">
                         <div class="row ">
                             <div class="col-12 col-md-7">
                                 <div class="d-flex flex-row">
@@ -21,7 +21,7 @@
                                     </div>
                                     <div class="product-details">
                                         <div class="line-item-header">
-                                            <div class="line-item-name">
+                                            <div class="line-item-name" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
                                                 <a href="/detail/{{$item['id']}}" class="d-inline-block text-reset text-truncate">{{$item['name']}}</a>
                                             </div>
                                         </div>
@@ -31,32 +31,28 @@
                             <div class="col-12 col-md-5 d-flex flex-column justify-content-between align-items-end product-card-footer">
                                 <div class="d-none d-md-block">
                                     <div class="line-item-total-price">
-                                        <div class="item-total-50ef52d6d9733f4a9ba05f526b price">
+                                        <div class="price">
                                             <div class="d-flex justify-content-end">
                                                 <div class="strike-through non-adjusted-price">
                                                     {{$item['regular_price']}}$
                                                 </div>
-                                                <div class="pricing line-item-total-price-amount item-total-50ef52d6d9733f4a9ba05f526b">
+                                                <div class="pricing line-item-total-price-amount">
                                                     {{$item['sale_price']}}$
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="line-item-promo item-50ef52d6d9733f4a9ba05f526b">
+                                    <div class="line-item-promo">
 
 
                                     </div>
 
                                 </div>
                                 <div class="product-edit product-move">
-                                    <!--                                
-                                <a href="/on/demandware.store/Sites-NTOSFRA-Site/default/Cart-GetProduct?uuid=50ef52d6d9733f4a9ba05f526b" class="edit" data-toggle="modal" data-target="#editProductModal" aria-label="Edit product Men's Retro Newberry Vest" title="Edit">🌸Edit</a>
-                                <a href="/s/NTOSFRA/default/addtowishlist" class="move" data-pid="1010586BJSAEO" data-name="Men's Retro Newberry Vest" data-action="/on/demandware.store/Sites-NTOSFRA-Site/default/Cart-RemoveProductLineItem" data-uuid="50ef52d6d9733f4a9ba05f526b" title="Move to Wishlist">Move to Wishlist🌸</a>
                                 <a href="#" class="remove-btn-lg remove-product" data-pid="1010586BJSAEO" data-action="/on/demandware.store/Sites-NTOSFRA-Site/default/Cart-RemoveProductLineItem" data-uuid="50ef52d6d9733f4a9ba05f526b" aria-label="Remove product Men's Retro Newberry Vest" title="Remove">🌸
-                                    Remove
+                                    Remove(NOT WORK)
                                 </a>
--->
                                 </div>
                             </div>
                         </div>
