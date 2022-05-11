@@ -3,6 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Routing\UrlGenerator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,18 +23,12 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(UrlGenerator $url)
     {
-        //MC API
-        // config(['package.client_id' => 'u6w1dqq0lzq4pl8812zjksrn']);
-        // config(['package.client_secret' => 'WjwRhP0UOr8P9IrjgXtpTqZi']);
-        // config(['package.auth_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.auth.marketingcloudapis.com/']);
-        // config(['package.rest_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.rest.marketingcloudapis.com/']);
-        // config(['package.soap_uri' => 'https://mcpththcmp1-ls8tz6vz2ypfzz7q.soap.marketingcloudapis.com/']);
+        //this is for DB length
+        Schema::defaultStringLength(191);
 
-
-        //Evergate
-        // config(['evergage.account' => 'ekim1482497']);
-        // config(['evergage.dataset' => 'engage']);
+        //this is for https route
+        $url->forceScheme('https');
     }
 }
