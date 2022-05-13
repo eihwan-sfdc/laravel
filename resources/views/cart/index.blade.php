@@ -117,6 +117,8 @@
 
 
 @section('javascript')
+
+@if (count($items) > 0)
 <script>
     _etmc.push(["trackCart", {
         "cart": [{
@@ -149,4 +151,6 @@
 
     });
 </script>
+@endif
+
 @endsection
