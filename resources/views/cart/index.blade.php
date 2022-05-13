@@ -24,6 +24,7 @@
                                             <div class="line-item-name" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
                                                 <a href="/detail/{{$item['id']}}" class="d-inline-block text-reset text-truncate">{{$item['name']}}</a>
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -34,10 +35,13 @@
                                         <div class="price">
                                             <div class="d-flex justify-content-end">
                                                 <div class="strike-through non-adjusted-price">
-                                                    {{$item['regular_price']}}$
+                                                    {{$item['regular_price']}}
                                                 </div>
                                                 <div class="pricing line-item-total-price-amount">
-                                                    {{$item['sale_price']}}$
+                                                    {{$item['sale_price']}}
+                                                </div>
+                                                <div class="qty-card-quantity-count" style="display:none">
+                                                    1
                                                 </div>
                                             </div>
                                         </div>
