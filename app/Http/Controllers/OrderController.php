@@ -39,6 +39,6 @@ class OrderController extends Controller
             $model->save();
         }
         $carts = Cart::where('user_id', $user_id)->delete();
-        return redirect('/checkout_complete');
+        return redirect('/confirmation');
     }
 }
