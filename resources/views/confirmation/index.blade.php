@@ -30,8 +30,10 @@
     </div>
 </div>
 
+@endsection
 
-@endsection@section('javascript')
+
+@section('javascript')
 <script type="text/javascript">
     
 </script>
