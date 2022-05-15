@@ -9,20 +9,17 @@ class Wishlist extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name',
-        'category',
-        'gender',
-        'color',
-        'image_url',
-        'standard_price',
-        'sale_price',
+        'user_id',
+        'product_id',
     ];
 
-    const CREATED_AT = 'creation_date';
+    const CREATED_AT = 'creation_at';
 }

@@ -27,5 +27,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => 'basicauth'], function() {
-    Route::post('tokenized', 'TokenizedSendingController@index');
+Route::post('tokenized', 'TokenizedSendingController@index');
 });

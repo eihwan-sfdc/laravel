@@ -9,7 +9,11 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 
 use Carbon\Carbon;
+use App\Models\Order;
 
+/***
+ * 購入結果画面
+ */
 class ConfirmationController extends Controller
 {
     /**
@@ -25,26 +29,18 @@ class ConfirmationController extends Controller
     /**
      * 商品カテゴリ
      */
-    public function index()
+    public function index($order_id)
     {
-        //$items = Cart::where('user_id', Auth::id())->get();
-        // $items = DB::table('carts')
-        //             ->join('products', 'carts.product_id', '=', 'products.id')
-        //             ->select('carts.*', 'products.*')
-        //             ->where('carts.user_id', Auth::id())
-        //             ->get();
-        // $items = json_decode(json_encode($items), true);
-        // $total_price = 0;
-        // foreach($items as $item) {
-        //     $total_price = $total_price + $item['sale_price'];
-        // }
-        // $tax = $total_price / 10;
-        $date = Carbon::now();
-        return view('confirmation.index', ['timestamp' => $date->getTimestamp()]);
+        $items = DB::table('orders')
+                ->join('products', 'orders.product_id', '=', 'products.id')
+                ->select('orders.*', 'products.*')
+                ->where('user_id', Auth::id())
+                ->where('order_id' , $order_id)
+                ->get();
+
+        $array = json_decode(json_encode($items), true);
+
+        return view('confirmation.index', ['order_id' => $order_id, 'items' => $array]);
     }
 
-    public function delete()
-    {
-
-    }
 }

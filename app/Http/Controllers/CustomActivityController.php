@@ -6,6 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
+/***
+ * Journey Builder の Custom Activity をテストするためのプログラム
+ * 昔作ったものであまり記憶にないので自由に変更してもらって構いません。
+ * 実装関連ドキュメントはこちら
+ * https://developer.salesforce.com/docs/marketing/marketing-cloud/guide/creating-activities.html
+ */
 class CustomActivityController extends Controller
 {
   public function index() {

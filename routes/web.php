@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ConfirmationController;
 
@@ -24,23 +25,28 @@ Route::get('/', function () {
 
 Route::get('/category/{name}', [ProductController::class, 'category']);
 Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
-Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
-Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
-Route::get('/confirmation', [ConfirmationController::class, 'index'])->middleware('auth');
 
 Route::post('/product/add_to_cart', [ProductController::class, 'add_to_cart'])->middleware('auth');
 Route::post('/product/add_to_wishlist', [ProductController::class, 'add_to_wishlist'])->middleware('auth');
 
+Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
+Route::post('/cart/delete', [CartController::class, 'delete'])->middleware('auth');
+Route::post('/checkout', [OrderController::class, 'checkout'])->middleware('auth');
+Route::get('/confirmation/{order_id}', [ConfirmationController::class, 'index'])->middleware('auth');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/wishlist', [WishlistController::class, 'index'])->middleware('auth');
+Route::post('/wishlist/delete', [WishlistController::class, 'delete'])->middleware('auth');
+
+Route::get('/static', function () {
+    return view('static');
+});
+
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
-
-//Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'basicauth'], function() {
     //ここにBasic認証をかけたいルーティングの設定を記述して下さい

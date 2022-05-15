@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Router;
 
 use Carbon\Carbon;
+use App\Models\Cart;
 
 class CartController extends Controller
 {
@@ -30,21 +31,25 @@ class CartController extends Controller
         //$items = Cart::where('user_id', Auth::id())->get();
         $items = DB::table('carts')
                     ->join('products', 'carts.product_id', '=', 'products.id')
-                    ->select('carts.*', 'products.*')
+                    ->select('carts.id as cart_id', 'carts.*', 'products.*')
                     ->where('carts.user_id', Auth::id())
                     ->get();
         $items = json_decode(json_encode($items), true);
         $total_price = 0;
         foreach($items as $item) {
-            $total_price = $total_price + $item['sale_price'];
+            $total_price = $total_price + ($item['sale_price'] * $item['quantity']) ;
         }
         $tax = $total_price / 10;
         $date = Carbon::now();
+
         return view('cart.index', ['items' => $items, 'total_price' => $total_price, 'tax' => $tax, 'timestamp' => $date->getTimestamp()]);
     }
 
-    public function delete()
+    public function delete(Request $request)
     {
-
+        
+        $cart_id = $request->cart_id;
+        Cart::where('id', $cart_id)-> delete();
+        return redirect('/cart');
     }
 }

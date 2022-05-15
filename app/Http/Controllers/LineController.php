@@ -6,6 +6,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 
+/***
+ * GroupConnect を利用する際に、Line の Webhook に MC のエンドポイントを直接設定せず外部サーバーを設定しても
+ * Lineからのリクエストを完全再現すれば問題なく動作することを検証するためのプログラム
+ */
 class LineController extends Controller
 {
 
@@ -24,7 +28,9 @@ class LineController extends Controller
     Log::emergency(json_encode($body));
     Log::emergency("\n********************************************\n");
 
-    $response = Http::withHeaders($headers)->post('https://cl.s10.exct.net:443/Response_LineOriginated.ashx?channelId=1654168336', $body);
+    //下記の URL を MC のエンドポイントに変更する必要がある。。定数は .env ファイルを参照。
+    //Refactoring 後テストしていない。
+    $response = Http::withHeaders($headers)->post(config('app.GROUPCONNECT_ENDPOINT'), $body);
 
     Log::emergency("\n*************** RESPONSE ***************\n");
     Log::emergency($response);

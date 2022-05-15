@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/***
+ * 何のために作成したのか覚えていないので自由に変えてもらって構いません。
+ */
 class PiController extends Controller
 {
   public function index () {

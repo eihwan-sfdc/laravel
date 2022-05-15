@@ -11,6 +11,7 @@ return [
     'API_AUTH_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.auth.marketingcloudapis.com/',
     'API_REST_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.rest.marketingcloudapis.com/',
     'API_SOAP_URI' => 'https://' . env('API_SUBDOMAIN', null) . '.soap.marketingcloudapis.com/',
+    'GROUPCONNECT_ENDPOINT' => env('GROUPCONNECT_ENDPOINT', null),
 
     /*
     |--------------------------------------------------------------------------

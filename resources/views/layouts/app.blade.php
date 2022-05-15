@@ -87,6 +87,9 @@
                             <a class="dropdown-item" href="/cart" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('CART') }}
                             </a>
+                            <a class="dropdown-item" href="/wishlist" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ __('WISHLIST') }}
+                            </a>
                             <a class="dropdown-item" href="/static" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ __('STATIC') }}
                             </a>

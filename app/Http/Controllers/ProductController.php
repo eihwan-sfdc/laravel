@@ -8,6 +8,7 @@ use Illuminate\Routing\Router;
 
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Wishlist;
 
 class ProductController extends Controller
 {
@@ -48,22 +49,37 @@ class ProductController extends Controller
     }
 
     /**
-     * カートへ登録
+     * カートへ登録しCart画面へ遷移
      */
     public function add_to_cart(Request $request) {
         
-//        $product_id = $request->input('product_id');
+        //ユーザ情報取得
         $user = Auth::user();
 
         $model = new Cart;
         $model->user_id = Auth::id();
         $model->product_id = $request->product_id;
+        $model->quantity = $request->quantity;
+
+        //$model->quantity = $quantity = ($request->quantity) ? $request->quantity : 1;
+
         if ($model->save()){
             return redirect('/cart');
         }
     }
 
-    public function add_to_wishlist() {
+    /**
+     * Wishlist へ登録し Wishlist 画面へ遷移
+     */
+    public function add_to_wishlist(Request $request) {
 
+        $user = Auth::user();
+
+        $model = new Wishlist;
+        $model->user_id = Auth::id();
+        $model->product_id = $request->product_id;
+        if ($model->save()){
+            return redirect('/wishlist');
+        }
     }
 }
