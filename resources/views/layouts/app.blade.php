@@ -22,7 +22,7 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <!-- Evergage -->
-    <script type="text/javascript" src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
+    <script type="text/javascript" async src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 
     <!-- Einstein Recommendation -->
     <script type="text/javascript" async src="//{{config('app.MID')}}.collect.igodigital.com/collect.js"></script>
@@ -46,7 +46,7 @@
 
 <body>
     <div id="app">
-        <header class="header">
+        <header class="site-header">
             <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
                 <div class="container">
                     <a class="navbar-brand" href="{{ secure_url('/') }}">
@@ -114,10 +114,15 @@
 
         <footer class="footer">
             <div class="container">
+                <form class="email-signup"> 
+                    <input type="text" id="dwfrm_mcsubscribe_email" placeholder="メールはこないよ!" action="email-signin">
+                    <input type="submit">
+                </form>
                 <div class="footer-brand">
                 </div>
                 this website is created for private study and no order will be processed.
             </div>
+            
         </footer>
 
 

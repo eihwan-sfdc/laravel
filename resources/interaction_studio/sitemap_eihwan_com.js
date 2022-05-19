@@ -3,7 +3,7 @@ Evergage.init({
     const config = {
         global: {
             contentZones: [
-                {name: "global_infobar_top_of_page", selector: "header.header"},
+                {name: "global_infobar_top_of_page", selector: "header.site-header"},
                 {name: "global_infobar_bottom_of_page", selector: "footer.footer"},
                 {name: "global_popup" }
             ],
@@ -16,12 +16,26 @@ Evergage.init({
                 }
                 return actionEvent;
             },
+            listeners: [
+                Evergage.listener("submit", ".email-signup", () => {
+                    const email = "dummy-email-signup-footer@salesforce.com";
+                    if (email) {
+                        Evergage.sendEvent({ action: "Email Sign Up - Footer", user: {attributes: {emailAddress: email}}});
+                    }
+                }),
+            ],
         },         
         pageTypeDefault: {
             name: "default"
         },
         pageTypes: [
-        {
+            {
+                name: "category",
+                action: "Viewed Category",
+                isMatch: () => /\/category/.test(window.location.href),
+                
+            },
+            {
                 name: "product_detail",
                 
                 // この Page Type に該当するかどうかを判断
@@ -72,7 +86,7 @@ Evergage.init({
                     Evergage.listener("click", ".add-to-cart", () => {
                         const lineItem = { 
                             _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
-                            price: Evergage.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"), //何故か取れない。。
+                            price: Evergage.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
                             quantity: 1,
                         };
                         Evergage.sendEvent({
@@ -85,6 +99,59 @@ Evergage.init({
                         });
                     }),
                 ]
+            },
+            {
+                name: "cart",   
+                isMatch: () => /\/cart/.test(window.location.href),
+                itemAction: Evergage.ItemAction.ViewCart,
+                catalog: {
+                    Product: {
+                        lineItems: {
+                            _id: () => {
+                                return Evergage.resolvers.fromSelectorAttributeMultiple(".product-info .product-details", "data-pid");
+                            },
+                            price: () => {
+                                return Evergage.resolvers.fromSelectorMultiple(".product-info .pricing");
+                            },
+                            quantity: () => {
+                                return Evergage.resolvers.fromSelectorMultiple(".product-info .qty-card-quantity-count");
+                            },
+                        }
+                    }
+                }
+            },
+            {
+                name: "static-page-a",
+                isMatch: () => /\/static-page-a/.test(window.location.href),
+                onActionEvent: (actionEvent) => {
+                    actionEvent.user = actionEvent.user || {};
+                    actionEvent.user.attributes = actionEvent.user.attributes || {};
+                    actionEvent.user.attributes.emailAddress = "eihwan.kim+page+a@salesforce.com";
+                    actionEvent.user.attributes.firstName = "Eihwan";
+                    actionEvent.user.attributes.lastName = "Kim";
+                return actionEvent;
+                }
+            },
+            {
+                name: "static-page-b",
+                isMatch: () => /\/static-page-b/.test(window.location.href),
+                onActionEvent: (actionEvent) => {
+                    actionEvent.user = actionEvent.user || {};
+                    actionEvent.user.attributes = actionEvent.user.attributes || {};
+                    actionEvent.user.attributes.firstName = "Kamisama";
+                    actionEvent.user.attributes.lastName = "Machikawa";
+                return actionEvent;
+                }
+            },
+            {
+                name: "static-page-c",
+                isMatch: () => /\/static-page-c/.test(window.location.href),
+                onActionEvent: (actionEvent) => {
+                    actionEvent.user = actionEvent.user || {};
+                    actionEvent.user.attributes = actionEvent.user.attributes || {};
+                    actionEvent.user.attributes.emailAddress = "eihwan.kim+page+a@salesforce.com";
+                return actionEvent;
+                }
             },
 
         ]

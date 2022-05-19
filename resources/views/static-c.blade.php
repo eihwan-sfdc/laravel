@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h2>STATIC</h2>
+    <h2>STATIC PAGE C</h2>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <a href="/static-page-a">
