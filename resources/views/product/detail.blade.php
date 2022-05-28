@@ -51,6 +51,16 @@
                                 Add to Wishlist
                             </button>
                         </div>
+                        <span>&nbsp;</span>
+                        <div class="pdp-checkout-button d-flex">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="viewItemDetail">
+                            ViewItemDetail
+                            </button>
+                            &nbsp;
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" id="quickViewItem">
+                            QuickViewItem
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,7 +91,51 @@
 @endsection
 
 
-
+@section('modal')
+<div class="modal" tabindex="-1" id="modal-viewItemDetail">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close modal-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Interaction Studio SiteMap Capture Event : View Item Detail 用ダミーモーダル</p>
+        <p>
+            <a href="https://developer.evergage.com/web-integration/sitemap/item-actions#view-item-detail" target="_blank">
+            https://developer.evergage.com/web-integration/sitemap/item-actions#view-item-detail
+            </a>            
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-close" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal" tabindex="-1" id="modal-quickViewItem">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5><!-- IS SiteMap では "click", ".quickViewClose" で Stop Quick View Item をトラッキング する必要がある。-->
+        <button type="button" class="btn-close modal-close quickViewClose" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Interaction Studio SiteMap Capture Event : Quick View Item 用ダミーモーダル</p>
+        <p>こちらは Stop Quick View Item イベントとセットで使われることから、画面を表示している時間もトラッキングするみたい</p>
+        <p>
+            <a href="https://developer.evergage.com/web-integration/sitemap/item-actions#special-item-actions" target="_blank">
+            https://developer.evergage.com/web-integration/sitemap/item-actions#special-item-actions
+            </a>            
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary modal-close quickViewClose" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endsection
 
 
 @section('javascript')
@@ -102,6 +156,20 @@
             let form = $("#form");
             form.attr("action", "/product/add_to_wishlist");
             form.submit();
+        });
+
+        // viewItemDetail モーダル表示用 
+        $("#viewItemDetail").on("click", function(event) {
+            $("#modal-viewItemDetail").show();
+        });
+        // quickViewItem モーダル表示用 
+        $("#quickViewItem").on("click", function(event) {
+            $("#modal-quickViewItem").show();
+        });
+        
+        // モーダルを閉じる
+        $(".modal-close").on("click", function(event) {
+            $(".modal").hide();
         });
 
         _etmc.push(["trackPageView", { "item" : "{{$item['id']}}" }]);

@@ -128,6 +128,9 @@
 
     </div>
 
+    <!-- モーダル(Popup WindowのようなUI)-->
+    @yield('modal')
+
     @yield('javascript')
 
 </body>

@@ -19,14 +19,17 @@ use App\Http\Controllers\ConfirmationController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', function () { // URL のルート / にアクセスがあった場合は、固定で welcome.blade.php を返す。
     return view('welcome');
 });
 
-Route::get('/category/{name}', [ProductController::class, 'category']);
+Route::get('/category/{name}', [ProductController::class, 'category']);// // URL のパスが /category/xxxxx の場合 ProductController の category メソッドを実行
 Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
 
 Route::post('/product/add_to_cart', [ProductController::class, 'add_to_cart'])->middleware('auth');
+// ↑↑ /product/add_to_cart のURLに POST された場合、ProductController の add_to_cart メソッドを実行。
+// ただし、ログイン後のみ利用できる。
+
 Route::post('/product/add_to_wishlist', [ProductController::class, 'add_to_wishlist'])->middleware('auth');
 
 Route::get('/cart', [CartController::class, 'index'])->middleware('auth');
