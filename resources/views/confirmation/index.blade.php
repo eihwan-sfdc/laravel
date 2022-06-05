@@ -5,13 +5,12 @@
     <h2>CHECKOUT COMPLETE</h2>
 
     ORDER NUMBER<br>
-    <div class="order-number">
+    <div class="order-number" data-orderid="{{$order_id}}" data-totalprice="{{$total_price}}">
     {{$order_id}}
     </div><br>
 
     @foreach ($items as $item)
-                <input type="hidden" name="product_ids[]" value="{{$item['product_id']}}" />
-                <div class="cart-products">
+                <div class="product-line-item">
                     <div class="product-info  p-2 p-md-4">
                         <div class="row ">
                             <div class="col-12 col-md-7">
@@ -23,7 +22,7 @@
                                     </div>
                                     <div class="product-details">
                                         <div class="line-item-header">
-                                            <div class="line-item-name" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
+                                            <div class="line-item-quantity-info" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
                                             {{$item['name']}}
                                             </div>
                                         </div>
@@ -43,8 +42,8 @@
                                                 </div>
                                                 
                                             </div>
-                                            <div class="qty-card-quantity-count" >
-                                            Quantity:&nbsp;{{$item['quantity']}}
+                                            Quantity:&nbsp;<div class="qty-card-quantity-count" data-quantity="{{$item['quantity']}}">
+                                            {{$item['quantity']}}
                                             </div>
                                         </div>
                                     </div>
@@ -58,6 +57,25 @@
                     </div>
                 </div>
                 @endforeach
+                <div class="cart-products">
+                    <div class="product-info-total  p-2 p-md-4">
+                        <div class="row ">
+                            <div class="col-12 col-md-7">
+                            </div>
+                            <div class="col-12 col-md-5 d-flex flex-column justify-content-between align-items-end product-card-footer">
+                                <div class="d-none d-md-block">
+                                    <div class="line-item-total-price">
+                                        <div class="price">
+                                            <div class="d-flex justify-content-end">
+                                            Total Price : {{$total_price}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </div>
 
 @endsection

@@ -98,6 +98,37 @@ Evergage.init({
                             }
                         });
                     }),
+                    Evergage.listener("click", "#viewItemDetail", () => {
+                        const lineItem = { 
+                            _id: Evergage.cashDom(".product-detail[data-pid]").attr("data-pid"),
+                        };
+                        Evergage.sendEvent({
+                            itemAction: Evergage.ItemAction.ViewItemDetail,
+                            catalog: {
+                                Product: lineItem
+                            }
+                        });
+                    }),
+                    Evergage.listener("click", "#quickViewItem", () => {
+                        const pid = Evergage.cashDom(".product-detail[data-pid]").attr("data-pid");
+                        if (!pid) {
+                            return;
+                        }
+                        Evergage.sendEvent({
+                            itemAction: Evergage.ItemAction.QuickViewItem,
+                            catalog: {
+                                Product: {
+                                    _id: pid
+                                }
+                            }
+                        });
+                    }),
+                    Evergage.listener("click", ".quickViewClose", () => {
+                        Evergage.sendEvent({
+                            action: "Close Quick View",
+                            itemAction: Evergage.ItemAction.QuickViewItem,
+                        })
+                    }),
                 ]
             },
             {
@@ -121,12 +152,49 @@ Evergage.init({
                 }
             },
             {
+                name: "order_confirmation",
+                isMatch: () => /\/confirmation/.test(window.location.href),
+                itemAction: Evergage.ItemAction.Purchase,
+                order: {
+                    Product: {
+                        orderId: Evergage.cashDom(".order-number").attr("data-orderid").trim(),
+                        totalValue: Evergage.cashDom(".order-number").attr("data-totalprice").trim(),
+                        currency: "JPY",
+                    }
+                }
+                // interaction: {
+                //     name: Evergage.OrderInteractionName.Purchase,
+                //     order: {
+                //         id: Evergage.DisplayUtils.pageElementLoaded(".order-number", "html").then((ele) => {
+                //             return Evergage.resolvers.fromSelector(".order-number");
+                //         }),
+                //         lineItems: Evergage.DisplayUtils.pageElementLoaded(".product-line-item", "html").then(() => {   
+                //             let purchaseLineItems = [];
+                //             Evergage.cashDom(".product-line-item").each((index, ele) => {
+                //                 let itemQuantity = parseInt(SalesforceInteractions.cashDom(ele).find(".qty-card-quantity-count").text().trim());
+                //                 if (itemQuantity && itemQuantity > 0) {
+                //                     let lineItem = {
+                //                         catalogObjectType: "Product",
+                //                         catalogObjectId: Evergage.cashDom(ele).find(".line-item-quantity-info").attr("data-pid").trim(),
+                //                         price: Evergage.cashDom(ele).find(".pricing").text().trim().replace(/[^0-9\.]+/g,"")/itemQuantity,
+                //                         quantity: itemQuantity
+                //                     };
+                //                     purchaseLineItems.push(lineItem);
+                //                 }    
+                //             })
+                //             return purchaseLineItems;
+                //         })
+                //     }
+                // }
+            },
+            {
                 name: "static-page-a",
                 isMatch: () => /\/static-page-a/.test(window.location.href),
                 onActionEvent: (actionEvent) => {
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.attributes.emailAddress = "eihwan.kim+page+a@salesforce.com";
+                    actionEvent.user.attributes.customerId = "test123";
+                    actionEvent.user.attributes.nonIdentityEmail = "test123+1@salesforce.com";
                     actionEvent.user.attributes.firstName = "Eihwan";
                     actionEvent.user.attributes.lastName = "Kim";
                 return actionEvent;
@@ -138,8 +206,9 @@ Evergage.init({
                 onActionEvent: (actionEvent) => {
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.attributes.firstName = "Kamisama";
-                    actionEvent.user.attributes.lastName = "Machikawa";
+                    actionEvent.user.attributes.customerId = "test123";
+                    actionEvent.user.attributes.firstName = "Test";
+                    actionEvent.user.attributes.lastName = "Taro";
                 return actionEvent;
                 }
             },
@@ -149,7 +218,9 @@ Evergage.init({
                 onActionEvent: (actionEvent) => {
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.attributes.emailAddress = "eihwan.kim+page+a@salesforce.com";
+                    actionEvent.user.attributes.customerId = "test123";
+                    actionEvent.user.attributes.nonIdentityEmail = "test123+2@salesforce.com";
+                    actionEvent.user.attributes.encryptedField = atob("VEVTVA==");
                 return actionEvent;
                 }
             },

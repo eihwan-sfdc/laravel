@@ -40,7 +40,11 @@ class ConfirmationController extends Controller
 
         $array = json_decode(json_encode($items), true);
 
-        return view('confirmation.index', ['order_id' => $order_id, 'items' => $array]);
+        $total_price = 0;
+        foreach ($array as $item) {
+            $total_price = $total_price + $item['sale_price'];
+        }
+        return view('confirmation.index', ['order_id' => $order_id, 'items' => $array, 'total_price' => $total_price]);
     }
 
 }
