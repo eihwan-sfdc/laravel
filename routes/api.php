@@ -21,8 +21,8 @@ Route::post('custom_activity/publish', 'CustomActivityController@custom_publish'
 Route::post('custom_activity/validate', 'CustomActivityController@custom_validate');
 Route::post('custom_activity/stop', 'CustomActivityController@custom_stop');
 
-Route::post('transactional_message/ens_callbacks', 'EventNotificationController@ens_callbacks');
-Route::post('transactional_message/ens_callbacks2', 'EventNotificationController@ens_callbacks');
+Route::post('transactional_message/ens_callbacks', 'EventNotificationServiceController@ens_callbacks');
+Route::post('transactional_message/ens_callbacks2', 'EventNotificationServiceController@ens_callbacks');
 
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
