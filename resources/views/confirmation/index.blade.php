@@ -5,9 +5,7 @@
     <h2>CHECKOUT COMPLETE</h2>
 
     ORDER NUMBER<br>
-    <div class="order-number" data-orderid="{{$order_id}}" data-totalprice="{{$total_price}}">
-    {{$order_id}}
-    </div><br>
+    <div class="order-number" data-orderid="{{$order_id}}" data-totalprice="{{$total_price}}">{{$order_id}}</div><br>
 
     @foreach ($items as $item)
                 <div class="product-line-item">
