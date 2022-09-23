@@ -20,7 +20,7 @@
                                     </div>
                                     <div class="product-details">
                                         <div class="line-item-header">
-                                            <div class="line-item-quantity-info" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
+                                            <div class="line-item-name" data-pid="{{$item['id']}}" data-price="{{$item['sale_price']}}">
                                             {{$item['name']}}
                                             </div>
                                         </div>
@@ -35,14 +35,10 @@
                                             Price:&nbsp;<div class="strike-through non-adjusted-price">
                                                     {{$item['regular_price']}}
                                                 </div>
-                                                <div class="pricing line-item-total-price-amount">
-                                                    {{$item['sale_price']}}
-                                                </div>
+                                                <div class="pricing line-item-total-price-amount">{{$item['sale_price']}}</div>
                                                 
                                             </div>
-                                            Quantity:&nbsp;<div class="qty-card-quantity-count" data-quantity="{{$item['quantity']}}">
-                                            {{$item['quantity']}}
-                                            </div>
+                                            Quantity:&nbsp;<div class="qty-card-quantity-count" data-quantity="{{$item['quantity']}}">{{$item['quantity']}}</div>
                                         </div>
                                     </div>
 
