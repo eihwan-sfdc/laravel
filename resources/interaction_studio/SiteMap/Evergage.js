@@ -13,6 +13,9 @@ Evergage.init({
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
                     actionEvent.user.attributes.emailAddress = email;
+                    actionEvent.user.attributes.customerId = email;
+                    actionEvent.user.attributes.sfmcContactKey = email;
+                    actionEvent.user.attributes.userName = email; /* attribute name is case sensitive */
                 }
                 return actionEvent;
             },
@@ -36,7 +39,7 @@ Evergage.init({
                 
             },
             {
-                name: "product_detail",
+                name: "detail",
                 
                 // この Page Type に該当するかどうかを判断
                 isMatch: () => /\/detail/.test(window.location.href),
@@ -139,7 +142,7 @@ Evergage.init({
                     Product: {
                         lineItems: {
                             _id: () => {
-                                return Evergage.resolvers.fromSelectorAttributeMultiple(".product-info .product-details", "data-pid");
+                                return Evergage.resolvers.fromSelectorAttributeMultiple(".product-info .product-details .line-item-name", "data-pid");
                             },
                             price: () => {
                                 return Evergage.resolvers.fromSelectorMultiple(".product-info .pricing");
@@ -157,35 +160,24 @@ Evergage.init({
                 itemAction: Evergage.ItemAction.Purchase,
                 order: {
                     Product: {
-                        orderId: Evergage.cashDom(".order-number").attr("data-orderid").trim(),
-                        totalValue: Evergage.cashDom(".order-number").attr("data-totalprice").trim(),
-                        currency: "JPY",
+                        orderId: () => {
+                            return Evergage.DisplayUtils.pageElementLoaded(".order-number", "html").then((ele) => {
+                                return Evergage.resolvers.fromSelector(".order-number");
+                            });
+                        },
+                        lineItems: {
+                            _id: () => {
+                                return Evergage.resolvers.fromSelectorAttributeMultiple(".product-info .product-details .line-item-name", "data-pid");
+                            },
+                            price: () => {
+                                return Evergage.resolvers.fromSelectorMultiple(".product-info .pricing");
+                            },
+                            quantity: () => {
+                                return Evergage.resolvers.fromSelectorMultiple(".product-info .qty-card-quantity-count");
+                            }
+                        }
                     }
                 }
-                // interaction: {
-                //     name: Evergage.OrderInteractionName.Purchase,
-                //     order: {
-                //         id: Evergage.DisplayUtils.pageElementLoaded(".order-number", "html").then((ele) => {
-                //             return Evergage.resolvers.fromSelector(".order-number");
-                //         }),
-                //         lineItems: Evergage.DisplayUtils.pageElementLoaded(".product-line-item", "html").then(() => {   
-                //             let purchaseLineItems = [];
-                //             Evergage.cashDom(".product-line-item").each((index, ele) => {
-                //                 let itemQuantity = parseInt(SalesforceInteractions.cashDom(ele).find(".qty-card-quantity-count").text().trim());
-                //                 if (itemQuantity && itemQuantity > 0) {
-                //                     let lineItem = {
-                //                         catalogObjectType: "Product",
-                //                         catalogObjectId: Evergage.cashDom(ele).find(".line-item-quantity-info").attr("data-pid").trim(),
-                //                         price: Evergage.cashDom(ele).find(".pricing").text().trim().replace(/[^0-9\.]+/g,"")/itemQuantity,
-                //                         quantity: itemQuantity
-                //                     };
-                //                     purchaseLineItems.push(lineItem);
-                //                 }    
-                //             })
-                //             return purchaseLineItems;
-                //         })
-                //     }
-                // }
             },
             {
                 name: "static-page-a",
@@ -193,10 +185,12 @@ Evergage.init({
                 onActionEvent: (actionEvent) => {
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.attributes.customerId = "test123";
-                    actionEvent.user.attributes.nonIdentityEmail = "test123+1@salesforce.com";
+                    actionEvent.user.attributes.customerId = "customerKey43415881";
+                    actionEvent.user.attributes.nonIdentityEmail = "cloz2me@gmail.com";
                     actionEvent.user.attributes.firstName = "Eihwan";
                     actionEvent.user.attributes.lastName = "Kim";
+                    actionEvent.user.attributes.UserName = "UserName HogeHoge";
+                    actionEvent.user.attributes.title = "title";
                 return actionEvent;
                 }
             },
@@ -218,9 +212,14 @@ Evergage.init({
                 onActionEvent: (actionEvent) => {
                     actionEvent.user = actionEvent.user || {};
                     actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.attributes.customerId = "test123";
-                    actionEvent.user.attributes.nonIdentityEmail = "test123+2@salesforce.com";
-                    actionEvent.user.attributes.encryptedField = atob("VEVTVA==");
+/*                    
+                    actionEvent.user.attributes.customerId = "customerId";
+                    actionEvent.user.attributes.name = "name";
+                    actionEvent.user.attributes.title = "title";
+                    actionEvent.user.attributes.displayName = "displayName";
+*/
+                    actionEvent.user.attributes.userName = "userName";
+                    actionEvent.user.attributes.displayName = "displayName";
                 return actionEvent;
                 }
             },
