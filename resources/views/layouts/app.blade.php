@@ -25,7 +25,7 @@
     <script type="text/javascript" async src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
 
     <!-- CDP Web Integration s8 -->
-    <script type="text/javascript" src="https://cdn.c360a.salesforce.com/beacon/c360a/37519ab7-5f78-40ce-878a-b48547c97db5/scripts/c360a.min.js"></script>
+    <script type="text/javascript" src="https://cdn.c360a.salesforce.com/beacon/c360a/471a98ba-00e6-4f26-8d64-99332d9d72f6/scripts/c360a.min.js"></script>
     
 
     <!-- Einstein Recommendation -->
