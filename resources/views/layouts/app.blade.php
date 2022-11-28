@@ -115,6 +115,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <div class="rec1"></div>
+        <div class="rec2"></div>
+        <div class="rec3"></div>
 
         <footer class="footer">
             <div class="container">
