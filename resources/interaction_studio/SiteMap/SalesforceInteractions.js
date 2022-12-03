@@ -57,9 +57,11 @@ SalesforceInteractions.init({
                 isMatch: () => /\/detail/.test(window.location.href),
                 
                 //ページから Catalog 情報を取得
-                catalog: {
-                    Product: {
-                        _id: () => {
+                interaction: {
+                    name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
+                    catalogObject: {
+                        type: "Product",
+                        id: () => {
                             const products = getProductsFromDataLayer() || [];
                             if (products.length > 0) {
                                 return products[0].id;
@@ -67,14 +69,16 @@ SalesforceInteractions.init({
                                 return SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid");
                             }
                         },
-                        name: SalesforceInteractions.cashDom(".product-detail[data-pname]").attr("data-pname"),
-                        url: SalesforceInteractions.resolvers.fromHref(),
-                        imageUrl: SalesforceInteractions.resolvers.fromSelectorAttribute(".product-carousel .carousel-item[data-slick-index='0'] img", "src"),
-                        inventoryCount: 1,
-                        regular_price: SalesforceInteractions.cashDom(".product-detail[data-regularprice]").attr("data-regularprice"),
-                        salesprice: SalesforceInteractions.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
-                        category: SalesforceInteractions.cashDom(".product-detail[data-category]").attr("data-category"),
-                        dimensions: {
+                        attributes:{
+                            name: SalesforceInteractions.cashDom(".product-detail[data-pname]").attr("data-pname"),
+                            url: SalesforceInteractions.resolvers.fromHref(),
+                            imageUrl: SalesforceInteractions.resolvers.fromSelectorAttribute(".product-carousel .carousel-item[data-slick-index='0'] img", "src"),
+                            inventoryCount: 1,
+                            regular_price: SalesforceInteractions.cashDom(".product-detail[data-regularprice]").attr("data-regularprice"),
+                            salesprice: SalesforceInteractions.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
+                            category: SalesforceInteractions.cashDom(".product-detail[data-category]").attr("data-category"),
+                        },
+                        relatedCatalogObjects: {
                             Gender: () => {
                                 if (SalesforceInteractions.cashDom(".product-detail[data-gender]").attr("data-gender").toLowerCase() === "women") {
                                     console.log("WOMEN");
@@ -84,12 +88,6 @@ SalesforceInteractions.init({
                                     return ["MEN"];
                                 }
                             },
-                            // Color: SalesforceInteractions.resolvers.fromSelectorAttributeMultiple(".color-value", "data-attr-value"),
-                            // Feature: SalesforceInteractions.resolvers.fromSelectorMultiple(".features .feature", (features) => {
-                            //     return features.map((feature) => {
-                            //         return feature.trim();
-                            //     });
-                            // })
                         }
                     }
                 },
@@ -99,17 +97,15 @@ SalesforceInteractions.init({
                 ],
                 listeners: [ 
                     SalesforceInteractions.listener("click", ".add-to-cart", () => {
-                        const lineItem = { 
+                        let lineItem = { 
                             _id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
                             price: SalesforceInteractions.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
                             quantity: 1,
                         };
                         SalesforceInteractions.sendEvent({
-                            itemAction: SalesforceInteractions.ItemAction.AddToCart,
-                            cart: {
-                                singleLine: {
-                                    Product: lineItem
-                                }
+                            interaction: {
+                                name: SalesforceInteractions.CartInteractionName.AddToCart,
+                                lineItem: lineItem
                             }
                         });
                     }),
