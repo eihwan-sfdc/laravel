@@ -44,13 +44,13 @@ Route::get('/static', function () {
     return view('static');
 });
 
-Route::get('/static-page-a', function () {
+Route::get('/static/page-a', function () {
     return view('static-a');
 });
-Route::get('/static-page-b', function () {
+Route::get('/static/page-b', function () {
     return view('static-b');
 });
-Route::get('/static-page-c', function () {
+Route::get('/static/page-c', function () {
     return view('static-c');
 });
 
