@@ -67,3 +67,8 @@ Route::group(['middleware' => 'basicauth'], function() {
     //例
     Route::get('tokenized', 'TokenizedSendingController@gettest');
 });
+
+
+Route::get('/item/{product_id}', [ProductController::class, 'detail']);
+Route::get('/item/brand1/{product_id}', [ProductController::class, 'detail']);
+Route::get('/item/brand2/{product_id}', [ProductController::class, 'detail']);
