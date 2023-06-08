@@ -1,114 +1,146 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
-<!doctype html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="IcPUjjm9BwIhzByNFqKXLvPPo7PHcCkDTmWLnsP5">
-
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
-    <!-- Styles -->
-    <link href="https://eihwan.com/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://eihwan.com/css/app.css" rel="stylesheet">
-
-    <!-- Scripts -->
-    <script type="text/javascript" src="//code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <!-- Evergage -->
-    <script type="text/javascript" async src="//cdn.evgnet.com/beacon/ekim1482497/eihwan_com/scripts/evergage.min.js"></script>
-
-    <!-- CDP Web Integration 
-    <script type="text/javascript" src="https://cdn.c360a.salesforce.com/beacon/c360a/471a98ba-00e6-4f26-8d64-99332d9d72f6/scripts/c360a.min.js"></script>
-    s8 -->
-
-    <!-- Einstein Recommendation -->
-    <script type="text/javascript" async src="//1482497.collect.igodigital.com/collect.js"></script>
-</head>
-<script>var _etmc=[];_etmc.push(["setOrgId","1482497"]);_etmc.push(["trackPageView"]);</script>
-
-<body>
-    <div id="app">
-        <header class="site-header">
-            <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm ">
-                <div class="container">
-                    <a class="navbar-brand" href="https://eihwan.com">
-                        Laravel
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-
-                        </ul>
-
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <!-- Authentication Links -->
-                                                                                    <li class="nav-item">
-                                <a class="nav-link" href="https://eihwan.com/login">Login</a>
-                            </li>
-                            
-                                                        <li class="nav-item">
-                                <a class="nav-link" href="https://eihwan.com/register">Register</a>
-                            </li>
-                                                                                </ul>
-                    </div>
-                </div>
-            </nav>
-        </header>
-
-        <main class="py-4">
-            <div class="container">
-    <h2>STATIC</h2>
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <a href="/static/page-a">
-                PAGE-A
-            </a><br><br>
-            <a href="/static/page-b">
-                PAGE-B
-            </a><br><br>
-            <a href="/static/page-c">
-                PAGE-C
-            </a><br><br>
-        </div>
-    </div>
-</div>
-        </main>
-        <div class="rec1"></div>
-        <div class="rec2"></div>
-        <div class="rec3"></div>
-
-        <footer class="footer">
-            <div class="container">
-                <form class="email-signup"> 
-                    <input type="text" id="dwfrm_mcsubscribe_email" placeholder="メールはこないよ!" action="email-signin">
-                    <input type="submit">
-                </form>
-                <div class="footer-brand">
-                </div>
-                this website is created for private study and no order will be processed.
+        <script type="text/javascript" async src="//cdn.evgnet.com/beacon/ekim1482497/eihwan_com/scripts/evergage.min.js"></script>
+        
+        <title>TagTestPage</title>
+        <style type="text/css">
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+                color: #2E2E2E;
+                display:block;
+            }
+        </style>
+        
+    </head>
+    
+    <body id="body">
+        <div id="content">
+            <div>
+                <button id="btn" type="button">
+                    TagActivate
+                </button>
             </div>
-            
-        </footer>
 
-
-    </div>
-
-    <!-- モーダル(Popup WindowのようなUI)-->
-    
-    
-</body>
-
+            <script type="text/javascript">
+                window.onload = function() {
+                    document.getElementById("btn").addEventListener("click", tagActivate);
+                }
+            </script>
+            <!-- JSON -->
+            <div id="json">
+	            <script type="text/javascript">
+				    var Asw = {};
+				    Asw.BaseOutput = {
+				      "charSet": "UTF-8",
+				      "currentDateTime": "2023-05-23T01:01:01",
+				      "pageInformation": {
+				        "functionId": "FUNC-001",
+				        "pageId": "PAGE-001",
+				        "pageName": "Page001"
+				      },
+				      "aswContext": {
+				        "accessToken": "FAKE-ACCESS-TOKEN-001",
+				        "langForAdobeAnalytics": "ja_JP"
+				      },
+				      "errorMessageIds": ["PRB01P010-E0001-EBEF000006", "PRB01P010-E0002-EBEF000007"],
+				      "warningMessageIds": ["PRB01P010-WDYO000013- EBEF000008"]
+				    };
+				    Asw.PageOutput = {
+				      "functionId": "FUNC-001",
+				      "pageId": "PAGE-001",
+				      "subFunctionId": "SUBFUNC-001",
+				      "subPageId": "SUBPAGE-001",
+				      "isHeaderLoggedInAvailable": false,
+				      "isUpgradeFlow": false
+				    };
+				    Asw.ApiReplyOutput = {
+				      "api1": {
+				        "credential": {
+				          "firstName": "sampleFirstName",
+				          "lastName": "sampleLastName"
+				        },
+				        "orderId": "123456",
+				        "airBoundIds": [
+				          "1"
+				        ],
+				        "orderChangeId": "",
+				        "paymentRequest": {
+				          "paymentCard": {
+				            "registeredCardType": "paymentCard1",
+				            "cardNumber": "5678567856785678",
+				            "expiryDate": "092025",
+				            "cvv": "123",
+				            "holderName": "Taro Sorano",
+				            "isUatpCard": false,
+				            "updateBasicReservationInformation": {
+				              "cardType": "paymentCard1",
+				              "cardName": "Taro"
+				            }
+				          },
+				          "alternativePaymentMethod": {
+				            "paymentMethod": "alipay"
+				          },
+				          "authorization": {
+				            "paymentRedirectionContext": {
+				              "partner3DSSessionId": "string"
+				            },
+				            "paymentResumption": {
+				              "payerAuthenticationResponse": "string",
+				              "challenge3DSResponse": "string",
+				              "link": {
+				                "href": "string",
+				                "method": "GET",
+				                "payload": [
+				                  {
+				                    "name": "string",
+				                    "value": "string"
+				                  }
+				                ]
+				              }
+				            }
+				          },
+				          "payerIdentification": {
+				            "IPAddress": "46.235.153.60",
+				            "deviceFingerPrint": "deviceFingerPrint",
+				            "browser": {
+				              "acceptHeader": "acceptHeader",
+				              "userAgent": "userAgent"
+				            },
+				            "contact": {
+				              "email": {
+				                "address": "example@email.com"
+				              },
+				              "phone": {
+				                "countryPhoneExtension": "+81",
+				                "number": "0000000000"
+				              }
+				            }
+				          }
+				        },
+				        "bankAccount": {
+				          "bankName": "bank",
+				          "branchName": "branch",
+				          "accountNumber": "1234567",
+				          "accountName": "accountName",
+				          "accountType": "ordinary"
+				        }
+				      }
+				    };
+				</script>
+			</div>
+        </div>
+        <script type="text/javascript">
+            function tagActivate() {
+                var bodyElement = document.getElementById('content');
+                var tagElement = document.createElement('script');
+                tagElement.setAttribute('type','text/javascript');
+                tagElement.setAttribute('src','//cdn.evgnet.com/beacon/ekim1482497/eihwan_com/scripts/evergage.min.js');
+                bodyElement.appendChild(tagElement);
+            }
+        </script>
+    </body>
 </html>
+  
