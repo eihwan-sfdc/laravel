@@ -30,6 +30,8 @@
 
     <!-- Einstein Recommendation -->
     <script type="text/javascript" async src="//{{config('app.MID')}}.collect.igodigital.com/collect.js"></script>
+
+    <script type="text/javascript" async src="{{ secure_asset('js/test.js') }}" rel="stylesheet"></script>
 </head>
 @guest
 <script>

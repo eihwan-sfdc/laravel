@@ -1,0 +1,1 @@
+const testeihwan = 'hoge';
