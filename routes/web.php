@@ -27,6 +27,10 @@ Route::get('.well-known/acme-challenge/fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm6
     //for lets encrypt update
     return 'fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E.B0Bq2gbZAIENfFX0G-GvH2_HtY7_IIlDm9xuZt7mMgE';
 });
+Route::get('well-known/acme-challenge/fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E', function () {
+    //for lets encrypt update
+    return 'fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E.B0Bq2gbZAIENfFX0G-GvH2_HtY7_IIlDm9xuZt7mMgE';
+});
 
 
 
