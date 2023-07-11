@@ -23,6 +23,13 @@ Route::get('/', function () { // URL のルート / にアクセスがあった�
     return view('welcome');
 });
 
+Route::get('.well-known/acme-challenge/fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E', function () {
+    //for lets encrypt update
+    return 'fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E.B0Bq2gbZAIENfFX0G-GvH2_HtY7_IIlDm9xuZt7mMgE';
+});
+
+
+
 Route::get('/category/{name}', [ProductController::class, 'category']);// // URL のパスが /category/xxxxx の場合 ProductController の category メソッドを実行
 Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
 
@@ -73,7 +80,4 @@ Route::get('/item/{product_id}', [ProductController::class, 'detail']);
 Route::get('/item/brand1/{product_id}', [ProductController::class, 'detail']);
 Route::get('/item/brand2/{product_id}', [ProductController::class, 'detail']);
 
-Route::get('.well-known/acme-challenge/fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E', function () {
-    //for lets encrypt update
-    return 'fGUSvs1aeYpHgGLti9dBzVXc2py4FgYFv1uFtujm67E.B0Bq2gbZAIENfFX0G-GvH2_HtY7_IIlDm9xuZt7mMgE';
-});
+
