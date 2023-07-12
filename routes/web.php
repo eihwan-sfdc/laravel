@@ -24,6 +24,9 @@ Route::get('/', function () { // URL のルート / にアクセスがあった�
 });
 
 
+Route::get('/.well-known/acme-challenge/{token}', function (string $token) {
+    return \Illuminate\Support\Facades\Storage::get('public/.well-known/acme-challenge/' . $token);
+});
 
 
 Route::get('/category/{name}', [ProductController::class, 'category']);// // URL のパスが /category/xxxxx の場合 ProductController の category メソッドを実行
@@ -75,5 +78,4 @@ Route::group(['middleware' => 'basicauth'], function() {
 Route::get('/item/{product_id}', [ProductController::class, 'detail']);
 Route::get('/item/brand1/{product_id}', [ProductController::class, 'detail']);
 Route::get('/item/brand2/{product_id}', [ProductController::class, 'detail']);
-
 
