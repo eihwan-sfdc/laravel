@@ -65,7 +65,7 @@ Route::get('/static/page-c', function () {
     return view('static-c');
 });
 
-Route::post('/email-signin', [DummyController::class, 'email_signin']);
+//Route::post('/email-signin', [DummyController::class, 'email_signin']);
 
 // Route::get('/dashboard', function () {
 //     return view('dashboard');
