@@ -28,6 +28,9 @@ Route::get('/well-known/acme-challenge/{token}', function (string $token) {
     return $token;
 });
 
+Route::get('/.well-known/acme-challenge/{token}', function (string $token) {
+    return $token;
+});
 
 Route::get('/category/{name}', [ProductController::class, 'category']);// // URL のパスが /category/xxxxx の場合 ProductController の category メソッドを実行
 Route::get('/detail/{product_id}', [ProductController::class, 'detail']);
