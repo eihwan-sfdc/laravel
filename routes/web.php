@@ -23,11 +23,12 @@ Route::get('/', function () { // URL のルート / にアクセスがあった�
     return view('welcome');
 });
 
-Route::get('/w-n/acme-challenge/{token}', function (string $token) {
+
+Route::get('/well-known/acme-challenge/{token}', function (string $token) {
     return $token;
 });
 
-Route::get('/well-known/acme-challenge/{token}', function (string $token) {
+Route::get('/.w-n/acme-challenge/{token}', function (string $token) {
     return $token;
 });
 
