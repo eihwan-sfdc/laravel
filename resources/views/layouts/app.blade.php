@@ -4,13 +4,13 @@
 <head>
 
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={{config('app.EVERGAGE_ACCOUNT')}}"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id={{config('app.GA4_MEASUREMENT_ID')}}"></script>
     <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag("js", new Date());
 
-    gtag("config", "{{config('app.EVERGAGE_ACCOUNT')}}");
+    gtag("config", "{{config('app.GA4_MEASUREMENT_ID')}}");
     
     </script>
 
