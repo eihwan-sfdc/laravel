@@ -1,0 +1,59 @@
+<style type="text/css">
+	<!--
+	body {
+		background-color: #fff;
+		color: #1A1A1A;
+		margin: 0;
+		font-family: Arial, Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;;
+	}
+	a:link {
+		color: #1A1A1A;
+		text-decoration: none;
+	}
+	a:visited {
+		color: #1A1A1A;
+		text-decoration: none;
+	}
+	img {
+		border: 0;
+	}
+	table {
+		align: center;
+	}
+	-->
+	</style>
+	
+	<table border="0" width="568" cellspacing="0" cellpadding="0" style="border-bottom: solid 1px #E6E6E6;">
+			<tr>
+					<td height="24"></td>
+			</tr>
+			<tr>
+					<td width="24"></td>
+					<td align="center" width="200" valign="top">
+							<a href="${item.url}" target="_blank">
+									<img src="${item.imageUrl}" alt="${item.name}" width="200">
+							</a>
+							<br>
+					</td>
+					<td width="24"></td>
+					<td align="left" width="296" valign="top">
+							<p style="margin:0 0 24px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4; word-wrap: break-word;width: 296px;">
+									<font style="font-size:20px;">
+											<a href="${item.url}" target="_blank">
+												${item.name}
+											</a>
+									</font>
+							</p>
+							<p style="margin:0 0 24px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; word-wrap: break-word;width: 296px;">
+									<font style="font-size:16px;">${item.attributes.authorName.value}</font>
+							</p>
+							<p align="right">
+									<span style="background: #FFF;color:#333;display: block;font-size: 20px;text-align: center;line-height: 60px;border:solid 2px #ccc;border-radius: 32px;width: 220px;height: 60px;text-decoration: none;"><b>試し読みする</b></span>
+							</p>
+					</td>
+					<td width="24"></td>
+			</tr>
+			<tr>
+					<td height="24"></td>
+			</tr>
+	</table>
