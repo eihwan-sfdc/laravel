@@ -116,7 +116,7 @@
    //Debug
    //document.write("<textarea rows=5 cols=80>");
       document.write("<img src='");
-      document.write("https://click.exacttarget.com/conversion.aspx?xml=<system><system_name>tracking</system_name><action>conversion</action>");
+      document.write("https://click.s10.exacttarget.com/conversion.aspx?xml=<system><system_name>tracking</system_name><action>conversion</action>");
       document.write("<member_id>" + memberid + "</member_id>");
       document.write("<job_id>" + jobid + "</job_id>");
       if (subid == undefined) {
