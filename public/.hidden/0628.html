@@ -1,59 +1,44 @@
-<style type="text/css">
-	<!--
-	body {
-		background-color: #fff;
-		color: #1A1A1A;
-		margin: 0;
-		font-family: Arial, Helvetica, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", メイリオ, Meiryo, sans-serif;;
-	}
-	a:link {
-		color: #1A1A1A;
-		text-decoration: none;
-	}
-	a:visited {
-		color: #1A1A1A;
-		text-decoration: none;
-	}
-	img {
-		border: 0;
-	}
-	table {
-		align: center;
-	}
-	-->
-	</style>
-	
-	<table border="0" width="568" cellspacing="0" cellpadding="0" style="border-bottom: solid 1px #E6E6E6;">
-			<tr>
-					<td height="24"></td>
-			</tr>
-			<tr>
-					<td width="24"></td>
-					<td align="center" width="200" valign="top">
-							<a href="${item.url}" target="_blank">
-									<img src="${item.imageUrl}" alt="${item.name}" width="200">
-							</a>
-							<br>
-					</td>
-					<td width="24"></td>
-					<td align="left" width="296" valign="top">
-							<p style="margin:0 0 24px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 4; word-wrap: break-word;width: 296px;">
-									<font style="font-size:20px;">
-											<a href="${item.url}" target="_blank">
-												${item.name}
-											</a>
-									</font>
-							</p>
-							<p style="margin:0 0 24px;overflow: hidden;display: -webkit-box;-webkit-box-orient: vertical;-webkit-line-clamp: 2; word-wrap: break-word;width: 296px;">
-									<font style="font-size:16px;">${item.attributes.authorName.value}</font>
-							</p>
-							<p align="right">
-									<span style="background: #FFF;color:#333;display: block;font-size: 20px;text-align: center;line-height: 60px;border:solid 2px #ccc;border-radius: 32px;width: 220px;height: 60px;text-decoration: none;"><b>試し読みする</b></span>
-							</p>
-					</td>
-					<td width="24"></td>
-			</tr>
-			<tr>
-					<td height="24"></td>
-			</tr>
-	</table>
+SELECT      s.AccountID, 
+            s.OYBAccountID, 
+            s.JobID, 
+            s.ListID, 
+            s.BatchID as 'BatchID', 
+            s.SubscriberID as 'SubscriberID', 
+            s.SubscriberKey, 
+            s.EventDate as 'EmailSentDate', 
+            s.Domain, 
+            s.TriggererSendDefinitionObjectID, 
+            s.TriggeredSendCustomerKey,
+            o.EventDate as 'EmailOpenDate',
+            o.IsUnique as 'EmailOpenUnique',
+            c.EventDate as 'EmailClickDate', 
+            c.IsUnique as 'EmailClickUnique',
+            cp.[IsUnique] as 'SpamComplaint',
+            cp.[EventDate] as 'SpamComplaintDate',
+            u.[IsUnique] as 'Unsubscribed',
+            u.[EventDate] as 'UnsubscribedDate',
+            b.[BounceCategory] as 'BounceType',
+            b.[BounceSubcategory] as 'BounceDetail',
+            b.[IsUnique] as 'Bounced',
+            b.[EventDate] as 'BouncedDate',
+            (CASE WHEN b.[IsUnique] IS NOT NULL THEN 'FALSE' ELSE 'TRUE' END) as 'Delivered',
+            GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time' as LastUpdatedDate
+FROM        [_Sent] s
+            FULL OUTER JOIN [_Open] o 
+                ON s.[JobID] = o.[JobID] AND s.[BatchID] = o.[BatchID] AND s.[SubscriberKey] = o.[SubscriberKey] AND o.[IsUnique] = 1 
+            FULL OUTER JOIN [_Click] c 
+                ON s.[JobID] = c.[JobID] AND s.[BatchID] = c.[BatchID] AND s.[SubscriberKey] = c.[SubscriberKey] AND c.[IsUnique] = 1
+            FULL OUTER JOIN [_Unsubscribe] u
+                ON s.[JobID] = u.[JobID] AND s.[BatchID] = u.[BatchID] AND s.[SubscriberKey] = u.[SubscriberKey] AND u.[IsUnique] = 1
+            FULL OUTER JOIN [_Complaint] cp
+                ON s.[JobID] = cp.[JobID] AND s.[BatchID] = cp.[BatchID] AND s.[SubscriberKey] = cp.[SubscriberKey] AND cp.[IsUnique] = 1
+            FULL OUTER JOIN [_Bounce] b
+                ON s.[JobID] = b.[JobID] AND s.[BatchID] = b.[BatchID] AND s.[SubscriberKey] = b.[SubscriberKey] AND b.[IsUnique] = 1
+where       LEN(s.[SubscriberKey]) = 18
+            AND ((s.EventDate AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+              OR (o.EventDate AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+              OR (c.EventDate AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+              OR (u.[EventDate] AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+              OR (cp.[EventDate] AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+              OR (b.[EventDate]AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time') >= DATEADD(hour, -6, CONVERT(DATETIME, CONVERT(DATE, DATEADD(day, -2, GETDATE() AT TIME ZONE 'Central America Standard Time' AT TIME ZONE 'West Pacific Standard Time'))))
+            ) 
