@@ -2,6 +2,7 @@
 
 return [
     'GA4_MEASUREMENT_ID' => env('GA4_MEASUREMENT_ID', null),
+    'GTM_ID' => env('GTM_ID', null),
     'EVERGAGE_ACCOUNT' => env('EVERGAGE_ACCOUNT', null),
     'EVERGAGE_DATASET' => env('EVERGAGE_DATASET', null),
     'MID' => env('MID', null),
