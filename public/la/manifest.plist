@@ -29,7 +29,7 @@
 			<key>metadata</key>
 			<dict>
 				<key>bundle-identifier</key>
-				<string>com.salesforce.internal.jpmc</string>
+				<string>com.salesforce.eihwan.la</string>
 				<key>bundle-version</key>
 				<string>8.0.4</string>
 				<key>kind</key>
