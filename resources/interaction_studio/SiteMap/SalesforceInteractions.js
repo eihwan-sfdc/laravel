@@ -1,84 +1,75 @@
 SalesforceInteractions.init({
-    consents: [{
+    cookieDomain: "laravel-nto-a2161b512c29.herokuapp.com",
+    consents: [
+    {
         purpose: SalesforceInteractions.mcis.ConsentPurpose.Personalization,
         provider: "Example Consent Manager",
-        status: SalesforceInteractions.ConsentStatus.OptIn
-    }]
+        status: SalesforceInteractions.ConsentStatus.OptIn,
+    },
+  ],
 }).then(() => {
-    const config = {
+    const sitemapConfig = {
         global: {
+            onActionEvent: (actionEvent) => {
+                const email = SalesforceInteractions.cashDom(".logged-in-user-email").text().trim();
+                if (email) {
+                    actionEvent.user = actionEvent.user || {};
+                    actionEvent.user.attributes = actionEvent.user.attributes || {};
+                    actionEvent.user.attributes.emailAddress = email;
+                    actionEvent.user.attributes.customerId = email;
+                    actionEvent.user.attributes.sfmcContactKey = email;
+                    actionEvent.user.attributes.userName = email; /* attribute name is case sensitive */
+                }
+                return actionEvent;
+            },
             contentZones: [
                 {name: "global_infobar_top_of_page", selector: "header.site-header"},
                 {name: "global_infobar_bottom_of_page", selector: "footer.footer"},
                 {name: "global_popup" }
             ],
-            onActionEvent: (actionEvent) => {
-                const email = SalesforceInteractions.cashDom(".logged-in-user-email").text().trim();
-                actionEvent.user = actionEvent.user || {};
-                actionEvent.user.identities = actionEvent.user.identities || {};
-                actionEvent.user.attributes = actionEvent.user.attributes || {};
-                
-                if (email) {
-                    actionEvent.user.identities.userId = email;
-                    actionEvent.user.attributes.userId = email; // When "actionEvent.user.attributes.userId" is not set, [Event was missing core field: userId (ID of current user or email address)] error occurs 
-                    actionEvent.user.identities.emailAddress = email;
-                    actionEvent.user.identities.customerId = email;
-                    actionEvent.user.identities.sfmcContactKey = email;
-                    actionEvent.user.identities.userName = email; /* attribute name is case sensitive */
-                } else {
-                    actionEvent.user.identities.userId = "unknown-hogehoge-identities";
-                    actionEvent.user.attributes.userId = "unknown-hogehoge-attributes"; // When "actionEvent.user.attributes.userId" is not set, [Event was missing core field: userId (ID of current user or email address)] error occurs 
-                }
-                return actionEvent;
-            },
             listeners: [
                 SalesforceInteractions.listener("submit", ".email-signup", () => {
                     const email = "dummy-email-signup-footer@salesforce.com";
                     if (email) {
-                        SalesforceInteractions.sendEvent({ action: "Email Sign Up - Footer", user: {identities: {emailAddress: email}}});
+                        SalesforceInteractions.sendEvent({ action: "Email Sign Up - Footer", user: {attributes: {emailAddress: email}}});
                     }
                 }),
             ],
         },         
         pageTypeDefault: {
-            name: "default"
+            name: "default",
+            interaction: {
+                name: "Default Page",
+            },
         },
         pageTypes: [
-            {
-                name: "category",
-                action: "Viewed Category",
-                isMatch: () => /\/category/.test(window.location.href),
+            // {
+            //     name: "category",
+            //     action: "Viewed Category",
+            //     isMatch: () => /\/category/.test(window.location.href),
                 
-            },
+            // },
             {
-                name: "detail",
+                name: "product_detail",
                 
                 // この Page Type に該当するかどうかを判断
                 isMatch: () => /\/detail/.test(window.location.href),
                 
-                //ページから Catalog 情報を取得
                 interaction: {
                     name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
                     catalogObject: {
                         type: "Product",
-                        id: () => {
-                            const products = getProductsFromDataLayer() || [];
-                            if (products.length > 0) {
-                                return products[0].id;
-                            } else {
-                                return SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid");
-                            }
-                        },
-                        attributes:{
+                        id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
+                        attributes: {
                             name: SalesforceInteractions.cashDom(".product-detail[data-pname]").attr("data-pname"),
-                            url: SalesforceInteractions.resolvers.fromHref(),
-                            imageUrl: SalesforceInteractions.resolvers.fromSelectorAttribute(".product-carousel .carousel-item[data-slick-index='0'] img", "src"),
+                            url: window.location.href,
+                            imageUrl: SalesforceInteractions.cashDom(".img-fluid").attr("src"),
                             inventoryCount: 1,
                             regular_price: SalesforceInteractions.cashDom(".product-detail[data-regularprice]").attr("data-regularprice"),
                             salesprice: SalesforceInteractions.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
-                            category: SalesforceInteractions.cashDom(".product-detail[data-category]").attr("data-category"),
                         },
                         relatedCatalogObjects: {
+                            Category: SalesforceInteractions.cashDom(".product-detail[data-category]").attr("data-category"),
                             Gender: () => {
                                 if (SalesforceInteractions.cashDom(".product-detail[data-gender]").attr("data-gender").toLowerCase() === "women") {
                                     console.log("WOMEN");
@@ -89,8 +80,8 @@ SalesforceInteractions.init({
                                 }
                             },
                         }
-                    }
-                },
+                    },
+                }, 
                 contentZones: [
                     { name: "product_detail_recs_row_1", selector: ".row.recs.igo_product" },
                     { name: "product_detail_recs_row_2", selector: ".row.recs.evergage_product" },
@@ -98,46 +89,55 @@ SalesforceInteractions.init({
                 listeners: [ 
                     SalesforceInteractions.listener("click", ".add-to-cart", () => {
                         let lineItem = { 
-                            _id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
+                            catalogObjectType: "Product",
+                            catalogObjectId: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
                             price: SalesforceInteractions.cashDom(".product-detail[data-saleprice]").attr("data-saleprice"),
                             quantity: 1,
                         };
                         SalesforceInteractions.sendEvent({
                             interaction: {
                                 name: SalesforceInteractions.CartInteractionName.AddToCart,
-                                lineItem: lineItem
-                            }
+                                lineItem: lineItem,
+                            },
                         });
                     }),
                     SalesforceInteractions.listener("click", "#viewItemDetail", () => {
-                        const lineItem = { 
-                            _id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
-                        };
                         SalesforceInteractions.sendEvent({
-                            itemAction: SalesforceInteractions.ItemAction.ViewItemDetail,
-                            catalog: {
-                                Product: lineItem
-                            }
-                        });
-                    }),
-                    SalesforceInteractions.listener("click", "#quickViewItem", () => {
-                        const pid = SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid");
-                        if (!pid) {
-                            return;
-                        }
-                        SalesforceInteractions.sendEvent({
-                            itemAction: SalesforceInteractions.ItemAction.QuickViewItem,
-                            catalog: {
-                                Product: {
-                                    _id: pid
+                            interaction: {
+                                name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObjectDetail,
+                                catalogObject: {
+                                    type: "Product",
+                                    id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
+                                    // attributes: {
+                                        
+                                    // },
+                                    // relatedCatalogObjects: {
+                                    //   Color: [
+                                    //     SalesforceInteractions.cashDom(".color-value.selected").attr(
+                                    //       "data-attr-value",
+                                    //     ),
+                                    //   ],
+                                    // },
                                 }
                             }
                         });
                     }),
+                    SalesforceInteractions.listener("click", "#quickViewItem", () => {
+                        SalesforceInteractions.sendEvent({
+                            interaction: {
+                                name: SalesforceInteractions.CatalogObjectInteractionName.QuickViewCatalogObject,
+                                catalogObject: {
+                                type: "Product",
+                                id: SalesforceInteractions.cashDom(".product-detail[data-pid]").attr("data-pid"),
+                            },
+                          },
+                        });
+                    }),
                     SalesforceInteractions.listener("click", ".quickViewClose", () => {
                         SalesforceInteractions.sendEvent({
-                            action: "Close Quick View",
-                            itemAction: SalesforceInteractions.ItemAction.QuickViewItem,
+                            interaction: {
+                                name: SalesforceInteractions.mcis.CatalogObjectInteractionName.StopQuickViewCatalogObject,
+                            },
                         })
                     }),
                 ]
@@ -145,99 +145,78 @@ SalesforceInteractions.init({
             {
                 name: "cart",   
                 isMatch: () => /\/cart/.test(window.location.href),
-                itemAction: SalesforceInteractions.CartInteractionName.ReplaceCart,
-                catalog: {
-                    Product: {
-                        lineItems: {
-                            _id: () => {
-                                return SalesforceInteractions.resolvers.fromSelectorAttributeMultiple(".product-info .product-details .line-item-name", "data-pid");
-                            },
-                            price: () => {
-                                return SalesforceInteractions.resolvers.fromSelectorMultiple(".product-info .pricing");
-                            },
-                            quantity: () => {
-                                return SalesforceInteractions.resolvers.fromSelectorMultiple(".product-info .qty-card-quantity-count");
-                            },
-                        }
-                    }
-                }
+                interaction: {
+                    name: SalesforceInteractions.CartInteractionName.ReplaceCart,
+                    lineItems: SalesforceInteractions.DisplayUtils.pageElementLoaded(
+                        ".cart-empty, .checkout-btn",
+                        "html",
+                      ).then(() => {
+                        let cartLineItems = [];
+                        SalesforceInteractions.cashDom(".product-info").each((index, ele) => {
+                        //   let itemQuantity = parseInt(
+                        //     SalesforceInteractions.cashDom(ele).find(".qty-card-quantity-count").text().trim(),
+                        //   );
+                        itemQuantity = 1;
+                          if (itemQuantity && itemQuantity > 0) {
+                            let lineItem = {
+                              catalogObjectType: "Product",
+                              catalogObjectId: SalesforceInteractions.cashDom(ele)
+                                .find(".line-item-name")
+                                .attr("data-pid"),
+                              price:
+                                SalesforceInteractions.cashDom(ele)
+                                  .find(".pricing")
+                                  .text()
+                                  .replace(/[^0-9\.]+/g, "") / itemQuantity,
+                              quantity: itemQuantity,
+                            };
+                            cartLineItems.push(lineItem);
+                          }
+                        });
+                        return cartLineItems;
+                      }),
+                },
             },
             {
                 name: "order_confirmation",
                 isMatch: () => /\/confirmation/.test(window.location.href),
-                interaction:{
+                interaction: {
                     name: SalesforceInteractions.OrderInteractionName.Purchase,
                     order: {
-                        Product: {
-                            orderId: () => {
-                                return SalesforceInteractions.DisplayUtils.pageElementLoaded(".order-number", "html").then((ele) => {
-                                    return SalesforceInteractions.resolvers.fromSelector(".order-number");
-                                });
-                            },
-                            lineItems: {
-                                _id: () => {
-                                    return SalesforceInteractions.resolvers.fromSelectorAttributeMultiple(".product-info .product-details .line-item-name", "data-pid");
-                                },
-                                price: () => {
-                                    return SalesforceInteractions.resolvers.fromSelectorMultiple(".product-info .pricing");
-                                },
-                                quantity: () => {
-                                    return SalesforceInteractions.resolvers.fromSelectorMultiple(".product-info .qty-card-quantity-count");
-                                }
+                        id: SalesforceInteractions.cashDom(".order-number").attr("data-orderid"),
+                        lineItems: SalesforceInteractions.DisplayUtils.pageElementLoaded(
+                          ".product-line-item",
+                          "html",
+                        ).then(() => {
+                          let purchaseLineItems = [];
+                          SalesforceInteractions.cashDom(".product-line-item").each((index, ele) => {
+                            let itemQuantity = 1;
+                            // let itemQuantity = parseInt(
+                            //   SalesforceInteractions.cashDom(ele)
+                            //     .find(".qty-card-quantity-count")
+                            //     .text()
+                            //     .trim(),
+                            // );
+                            if (itemQuantity && itemQuantity > 0) {
+                              let lineItem = {
+                                catalogObjectType: "Product",
+                                catalogObjectId: SalesforceInteractions.cashDom(ele).find(".line-item-name").attr("data-pid").trim(),
+                                price: 
+                                  SalesforceInteractions.cashDom(ele)
+                                    .find(".pricing")
+                                    .text()
+                                    .trim()
+                                    .replace(/[^0-9\.]+/g, "") / itemQuantity,
+                                quantity: itemQuantity,
+                              };
+                              purchaseLineItems.push(lineItem);
                             }
-                        }
-                    }   
-                }
+                          });
+                          return purchaseLineItems;
+                        }),
+                    }
+                },
             },
-            {
-                name: "static-page-a",
-                isMatch: () => /\/static-page-a/.test(window.location.href),
-                onActionEvent: (actionEvent) => {
-                    actionEvent.user = actionEvent.user || {};
-                    actionEvent.user.identities = actionEvent.user.identities || {};
-                    actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    actionEvent.user.identities.customerId = "customerKey43415881";
-                    actionEvent.user.attributes.nonIdentityEmail = "cloz2me@gmail.com";
-                    actionEvent.user.attributes.firstName = "Eihwan";
-                    actionEvent.user.attributes.lastName = "Kim";
-                    actionEvent.user.attributes.UserName = "UserName HogeHoge";
-                    actionEvent.user.attributes.title = "title";
-                return actionEvent;
-                }
-            },
-            {
-                name: "static-page-b",
-                isMatch: () => /\/static-page-b/.test(window.location.href),
-                onActionEvent: (actionEvent) => {
-                    actionEvent.user = actionEvent.user || {};
-                    actionEvent.user.identities = actionEvent.user.identities || {};
-                    actionEvent.user.attributes = actionEvent.user.attributes || {};
-                    
-                    actionEvent.user.identities.customerId = "test123";
-                    actionEvent.user.attributes.firstName = "Test";
-                    actionEvent.user.attributes.lastName = "Taro";
-                return actionEvent;
-                }
-            },
-            {
-                name: "static-page-c",
-                isMatch: () => /\/static-page-c/.test(window.location.href),
-                onActionEvent: (actionEvent) => {
-                    actionEvent.user = actionEvent.user || {};
-                    actionEvent.user.identities = actionEvent.user.identities || {};
-                    actionEvent.user.attributes = actionEvent.user.attributes || {};
-/*                    
-                    actionEvent.user.identities.customerId = "customerId";
-                    actionEvent.user.attributes.name = "name";
-                    actionEvent.user.attributes.title = "title";
-                    actionEvent.user.attributes.displayName = "displayName";
-*/
-                    actionEvent.user.attributes.userName = "userName";
-                    actionEvent.user.attributes.displayName = "displayName";
-                return actionEvent;
-                }
-            },
-
         ]
     };
     const getProductsFromDataLayer = () => {
@@ -249,5 +228,5 @@ SalesforceInteractions.init({
             }
         }
     };
-    SalesforceInteractions.initSitemap(config);
+    SalesforceInteractions.initSitemap(sitemapConfig);
 });
