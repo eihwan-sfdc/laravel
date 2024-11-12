@@ -175,7 +175,7 @@ SalesforceInteractions
                 eventType: 'browse',
                 pageName: 'Lighthouse Home',
                 pageType: 'homepage',
-                pageUrl: 'https://eyeglass-store-e961361984b8.herokuapp.com',
+                pageUrl: 'https://laravel-nto-a2161b512c29.herokuapp.com',
                 pageView: '1',
             },
               /*eventType: 'browse',
@@ -189,7 +189,7 @@ SalesforceInteractions
           {
             locale: 'ja_JP',
             name: "product_detail",
-            isMatch: () => /product-/.test(window.location.pathname),
+            isMatch: () => /detail/.test(window.location.pathname),
             interaction: {
               name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
               eventType: 'browse',
@@ -200,12 +200,11 @@ SalesforceInteractions
 
               catalogObject: () => {
                 //商品データ
-                const ItemName = document.querySelector('.product-title').textContent;
-                const ItemPrice = document.querySelector('.product-price').textContent.replace(/¥|\,/g, '');
-                const ImageUrl = `${window.location.origin}${document.querySelector('.product-image img').getAttribute('src')}`;
+                const ItemName = document.querySelector('.product-detail[data-pname]').getAttribute("data-pname");
+                const ItemPrice = document.querySelector('.product-detail[data-pname]').getAttribute("data-regularprice").replace(/¥|\,/g, '');
+                const ImageUrl = document.querySelector('.img-fluid').getAttribute("src");
                 const ItemURL = window.location.href;
-                const ItemSKU = window.location.href.match(/product-\d+/)?.[0] || '0';
-
+                const ItemSKU = document.querySelector('.product-detail[data-pname]').getAttribute("data-pid");
 
                 return {
                   type: 'product_detail',
@@ -261,11 +260,11 @@ SalesforceInteractions
                 })
                 */
 				
-                const ItemName = document.querySelector('.product-title').textContent;
-                const ItemPrice = document.querySelector('.product-price').textContent.replace(/¥|\,/g, '');
-                const ImageUrl = `${window.location.origin}${document.querySelector('.product-image img').getAttribute('src')}`;
+                const ItemName = document.querySelector('.product-detail[data-pname]').getAttribute("data-pname");
+                const ItemPrice = document.querySelector('.product-detail[data-pname]').getAttribute("data-regularprice").replace(/¥|\,/g, '');
+                const ImageUrl = document.querySelector('.img-fluid').getAttribute("src");
                 const ItemURL = window.location.href;
-                const ItemSKU = window.location.href.match(/product-\d+/)?.[0] || '0';
+                const ItemSKU = document.querySelector('.product-detail[data-pname]').getAttribute("data-pid");
                 console.log(ItemName, ItemPrice, ImageUrl, ItemURL, ItemSKU)
                 
                 

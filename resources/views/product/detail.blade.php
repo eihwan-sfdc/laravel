@@ -66,26 +66,11 @@
             </div>
         </div>
 
-        <div class="recs">
-            <div id="product_rec">
-                <div class="igo_boxhead">
-                    <h2>ここは MC Einstein Recommendation</h2>
-                </div>
-                <div class="igo_boxbody">
-                    <div class="igo_product">
-                        
-                    </div>
-                </div>
-                <div class="igo_boxhead">
-                    <h2>ここは MC Evergage Recommendation</h2>
-                </div>
-                <div class="igo_boxbody">
-                    <div class="evergage_product">
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
+        <span><h3>Einstein Personalization Campaign</h3></span>
+        <div class="campaign-area"></div>
+
+        <span><h3>Einstein Personalization Recommendation</h3></span>
+        <div class="campaign-area-recommend"></div>
     </div>
 </div>
 @endsection
