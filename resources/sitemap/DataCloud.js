@@ -1,6 +1,7 @@
 /** Enable detailed client-side console logging. Do not use in Prod environment! */
 
-//SalesforceInteractions.setCookieDomain('eyeglass-store-e961361984b8.herokuapp.com')
+//SalesforceInteractions.setCookieDomain('laravel-nto-a2161b512c29.herokuapp.com')
+
 
 
 
@@ -86,7 +87,6 @@ SalesforceInteractions
       })
     }
 
-    ///🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸🌸
     const sitemapConfig = {
       global: {
         locale: 'ja_JP',
