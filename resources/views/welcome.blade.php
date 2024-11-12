@@ -59,6 +59,13 @@
         </div>
     </div>
 
+    
+    <span><h2>Einstein Personalization Campaign</h2></span>
+    <div class="campaign-area">
+
+    <span><h2>Einstein Personalization Recommendation</h2></span>
+    <div class="campaign-area-recommend">
+
     <div class="row recs">
         <div id="product_rec">
             <div class="igo_boxhead">
