@@ -21,15 +21,14 @@ SalesforceInteractions
     SalesforceInteractions.setLoggingLevel('debug')
 
     //プロファイルデータ
-
     const email = SalesforceInteractions.cashDom(".logged-in-user-email").text().trim();
+    const fname = 'Eihwan';
+    const lname = 'Kim';
+    const phoneNumber = '080-1111-2222';  
 
     if (email) {
 
-      const fname = 'Eihwan';
-      const lname = 'Kim';
-      const phoneNumber = '080-1111-2222';  
-
+      
       SalesforceInteractions.sendEvent({
         interaction: {
           name: 'ContactPointEmail_capture',

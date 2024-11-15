@@ -52,7 +52,7 @@
     It's not possible to use MCP SiteMap and Data Cloud SiteMap in the same site.
     -->
 
-    <!-- Data Cloud Web Integration -->
+    <!-- Data CloudDmlghk Web Integration -->
     <script type="text/javascript" src="https://cdn.c360a.salesforce.com/beacon/c360a/{{config('app.DC_WEBSITE_ID')}}/scripts/c360a.min.js"></script>
     
     <!-- Einstein Recommendation -->
