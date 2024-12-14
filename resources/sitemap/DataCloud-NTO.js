@@ -37,7 +37,7 @@ else {
 
 SalesforceInteractions.init({
    personalization: {
-    dataspace: "Personalization",
+    dataspace: "default",
   },
     //Define the cookieDomain to specify where cookies should be stored for the website. 
     //This setting ensures that cookies are only accessible within the specified domain, making it more secure and preventing potential security vulnerabilities.
@@ -243,21 +243,6 @@ SalesforceInteractions.init({
         pageTypeDefault: {
             locale: locale,
             name: "Default",
-            interaction: {
-                name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
-                catalogObject: {
-                    type: 'Page',
-                    id: 'Default',
-                    color: 'Brown',
-                    itemType: 'Product',
-                    productImageUrl: 'https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw221acc7f/images/large/1010516AK5-0.jpg',
-                    productName: 'DummyVestBrown',
-                    productSku: 'DummyVestBrown',
-                    productUrl: 'https://www.northerntrailoutfitters.com/default/men/jackets-%26-vests/vests/men%E2%80%99s-pill-vest-1010516AK5.html',
-                    size: 'S',
-                    unitPrice: '70',
-                }
-            },
         },
         // ****** END Specify Default PAGE TYPE ******
     };
@@ -268,84 +253,120 @@ SalesforceInteractions.init({
     // Page Types will identify and send events based on current page. As mentioned above, if none of these criteria fire, the Default page type will be recorded
     // In the examples below all page types are written as Catalog events which will appear in the [SDK Name]-BehavioralEvents object in Data Cloud
 
-    // Homepage
+    // ProductDetail
     config.pageTypes.push({
         locale: locale,
-        name: 'Homepage',
-        isMatch: () => {
-            // Pathname excludes root domain and excludes query parameters
-            // Example www.mysite.com/products/red-shirt?test=param would be /products/red-shirt
-            return window.location.pathname.split('/').includes('homepage')
-        },
+        name: 'ProductDetail',
+        isMatch: () => new Promise((resolve, reject) => {
+            let isMatchPDP = setTimeout(() => {
+              resolve(false);
+            }, 50);
+            return SalesforceInteractions.DisplayUtils.pageElementLoaded(
+              "div.page[data-action='Product-Show']",
+              "html",
+            ).then(() => {
+              clearTimeout(isMatchPDP);
+              resolve(true);
+            });
+        }),
         interaction: {
             name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
-            catalogObject: {
-                type: 'Page',
-                id: 'Homepage',
-                color: 'BLACK',
-                itemType: 'Product',
-                productImageUrl: 'https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw8b666c6e/images/large/1010024AC8-0.jpg',
-                productName: 'DummyVestBlack',
-                productSku: 'DummyVestBlack',
-                productUrl: 'https://www.northerntrailoutfitters.com/default/men/jackets-%26-vests/vests/men%27s-everyday-vest-1010024AC8.html',
-                size: 'M',
-                unitPrice: '700',
+            eventType: 'browse',
+            pageName: 'ProductDetail',
+            pageType: 'ProductDetail',
+            pageUrl: window.location.href,
+            catalogObject: () => {
+
+                const productId = SalesforceInteractions.cashDom(".product-id").first().text();
+                const itemImageUrl = `${window.location.origin}${document.querySelector('.img-fluid').getAttribute('src')}`;
+                const itemName = document.querySelector('.product-name').textContent;
+                const itemSku = document.querySelector('.product-detail').getAttribute('data-pid') || '0';
+                const itemUrl = window.location.href;
+                const itemPrice = SalesforceInteractions.cashDom(".prices .price .value").text().trim().replace(/[^0-9\.]+/g, "");
+
+                return {
+                    type: 'ProductDetail',
+                    id: productId,
+                    attributes:{
+                        productImageUrl: itemImageUrl,
+                        productName: itemName,
+                        productSku: itemSku,
+                        productUrl: itemUrl,
+                        unitPrice: parseInt(itemPrice),
+                        color: 'BLACK',
+                        itemType: 'Product',
+                        size: 'M',
+                    }
+                }                
             }
         },
-        listeners: []
+        listeners: [
+            SalesforceInteractions.listener("click", ".add-to-cart", () => {
+                SalesforceInteractions.sendEvent({
+                    interaction: {
+                         name: SalesforceInteractions.CartInteractionName.AddToCart,
+                         lineItem: {
+                             catalogObjectType: "Product",
+                             catalogObjectId: SalesforceInteractions.cashDom(".product-id").first().text(),
+                             quantity: document.querySelector('.quantity-select').value,
+                             price: SalesforceInteractions.cashDom(".prices .price .value").text().trim().replace(/[^0-9\.]+/g, ""),
+                             currency: "USD",
+                             attributes: {
+                                giftWrapping: 1
+                            }                        
+                         }
+                    }
+                });
+            }),
+        ]
     });
 
-    // Womens Pages 
-    config.pageTypes.push({
-        locale: locale,
-        name: 'Women',
-        isMatch: () => {
-            return window.location.pathname.split('/')[2].split('-').includes('women')
-        },
-        interaction: {
-            name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
-            catalogObject: {
-                type: 'Page',
-                id: 'Women',
-                color: 'BLACK',
-                itemType: 'Product',
-                productImageUrl: 'https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dwe0974982/images/large/2030902AC8-0.jpg',
-                productName: 'DummyShortsBlack',
-                productSku: 'DummyShortsBlack',
-                productUrl: 'https://www.northerntrailoutfitters.com/default/women/bottoms/shorts/women%E2%80%99s-ambition-shorts-2030902AC8.html',
-                size: 'M',
-                unitPrice: '50',
-            }
-        },
-        listeners: []
-    });
+    //Purchase 確定
+    if (window.location.pathname === '/default/confirmation') {
 
-    // Mens Pages
-    config.pageTypes.push({
-        locale: locale,
-        name: 'Men',
-        isMatch: () => {
-            return window.location.pathname.split('/')[2].split('-').includes('men')
-        },
-        interaction: {
-            name: SalesforceInteractions.CatalogObjectInteractionName.ViewCatalogObject,
-            catalogObject: {
-                type: 'Page',
-                id: 'Men',
-                color: 'BLACK',
-                itemType: 'Product',
-                productImageUrl: 'https://www.northerntrailoutfitters.com/on/demandware.static/-/Sites-nto-apparel/default/dw3d172150/images/large/2030630AC8-0.jpg',
-                productName: 'DummyPantsBlack',
-                productSku: 'DummyPantsBlack',
-                productUrl: 'https://www.northerntrailoutfitters.com/default/men/bottoms/snow-%26-alpine/women%27s-rainier-l5-gtx-pro-full-zip-bib-2030630AC8.html',
-                size: 'M',
-                unitPrice: '575',
-            }
-        },
-        listeners: []
-    });
+        config.pageTypes.push({
+            locale: locale,
+            name: 'OrderConfirmation',
+            isMatch: () => window.location.pathname === '/default/confirmation',
+            interaction: {
+                name: SalesforceInteractions.OrderInteractionName.Purchase,
+                pageName: 'OrderConfirmation',
+                pageType: 'OrderConfirmation',
+                pageUrl: window.location.href,
+                order: {
+                    id: document.querySelector('.order-number').textContent,
+                    totalValue: document.querySelector('.grand-total-sum').textContent,
+                    currency: "USD",
+                    lineItems: SalesforceInteractions.DisplayUtils.pageElementLoaded(".product-line-item", "html",).then(() => {
+                        let purchaseLineItems = [];
+                        SalesforceInteractions.cashDom(".product-line-item").each((index, ele) => {
+                            let itemQuantity = parseInt(SalesforceInteractions.cashDom(ele).find(".qty-card-quantity-count").text().trim());
+                            let itemObjectId = SalesforceInteractions.cashDom(ele).find(".line-item-quanity-info").attr("data-pid").trim();  
+                            let itemPrice = SalesforceInteractions.cashDom(ele).find(".line-item-total-price-amount").text().trim().replace(/[^0-9\.]+/g, "");
+                            
+                        if (itemQuantity && itemQuantity > 0) {
+                            let lineItem = {
+                                catalogObjectType: "Product",
+                                catalogObjectId: itemObjectId,
+                                price: itemPrice,
+                                quantity: itemQuantity,
+                            };
+                            purchaseLineItems.push(lineItem);
+                        }
+                        });
+                        return purchaseLineItems;
+                    }),
+                },
+            },
+            listeners: []
+        });
+    }
+    
 
     // ****** End Specify SPECIFIC PAGE TYPES ******
 
     SalesforceInteractions.initSitemap(config);
 });
+
+
+
