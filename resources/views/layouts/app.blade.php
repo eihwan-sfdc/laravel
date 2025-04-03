@@ -47,13 +47,14 @@
 
     <script type="text/javascript" async src="{{ secure_asset('js/test.js') }}" rel="stylesheet"></script>
     
-    <!-- Evergage 
     <script type="text/javascript" async src="//cdn.evgnet.com/beacon/{{config('app.EVERGAGE_ACCOUNT')}}/{{config('app.EVERGAGE_DATASET')}}/scripts/evergage.min.js"></script>
+    <!-- Evergage 
     It's not possible to use MCP SiteMap and Data Cloud SiteMap in the same site.
     -->
 
-    <!-- Data CloudDmlghk Web Integration -->
+    <!-- Data CloudDmlghk Web Integration
     <script type="text/javascript" src="https://cdn.c360a.salesforce.com/beacon/c360a/{{config('app.DC_WEBSITE_ID')}}/scripts/c360a.min.js"></script>
+     -->
     
     <!-- Einstein Recommendation -->
     <script type="text/javascript" async src="//{{config('app.MID')}}.collect.igodigital.com/collect.js"></script>
