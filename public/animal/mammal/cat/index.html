@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta name="viewport" content="width=device-width" />
+  <meta charset="utf-8">
+  <style>
+    /* パンくずリスト全体のスタイル */
+.breadcrumb {
+  display: flex; /* 要素を横並びにする */
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  list-style: none; /* リストの点を消す */
+  background-color: #e9ecef;
+  border-radius: 0.25rem;
+}
+
+/* 各項目のスタイル */
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+}
+
+/* 区切り文字（セパレーター）のスタイル */
+.breadcrumb-item + .breadcrumb-item::before {
+  content: ">"; /* 表示する文字 */
+  display: inline-block;
+  padding: 0 0.5rem;
+  color: #6c757d;
+  pointer-events: none; /* 区切り文字をクリックできないようにする */
+}
+
+/* リンクのスタイル */
+.breadcrumb-item a {
+  color: #0d6efd;
+  text-decoration: none;
+}
+
+.breadcrumb-item a:hover {
+  text-decoration: underline;
+}
+
+/* 現在のページ（アクティブな項目）のスタイル */
+.breadcrumb-item.active {
+  color: #6c757d;
+}
+  </style>
+  <title>Sinyoung Test</title>
+</head>
+<body>
+<h1>Sinyoung Test</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/animal/index.html">Animal</a></li>
+    <li class="breadcrumb-item"><a href="/animal//mammal/index.html">mammal</a></li>
+    <li class="breadcrumb-item"><a href="/animal//mammal/cat/index.html">cat</a></li>
+  </ol>
+</nav>
+</body>
+</html>
