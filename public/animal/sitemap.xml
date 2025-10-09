@@ -5,5 +5,25 @@
     <lastmod>2025-10-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
+  </url>
+    <url>
+    <loc>https://laravel-nto-a2161b512c29.herokuapp.com/animal/bird/index.html</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
   </url>  
+  </url>
+    <url>
+    <loc>https://laravel-nto-a2161b512c29.herokuapp.com/animal/bird/crow/index.html</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>  
+  </url>
+    <url>
+    <loc>https://laravel-nto-a2161b512c29.herokuapp.com/animal/bird/pigeon/index.html</loc>
+    <lastmod>2025-10-09</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>    
   </urlset>
